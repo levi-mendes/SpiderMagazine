@@ -1,0 +1,71 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+// Define versions in a single place
+ext {
+    // Sdk and tools
+
+    minSdkVersion     = 16
+    targetSdkVersion  = 23
+    compileSdkVersion = 24
+    buildToolsVersion = '24.0.1'
+
+    versionCode = 1
+    versionName = '1.0.0'
+
+    //test libraries
+    junitVersion = '4.12'
+    hamcrestVersion = '1.3'
+    runnerVersion   = '0.5'
+    rulesVersion    = '0.5'
+    espressoVersion = '2.2.2'
+    mockitoVersion  = '1.10.19'
+    powerMockito    = '1.6.2'
+
+    //web services integration
+    okhttpVersion              = '3.4.1'
+    retrofitVersion            = '2.1.0'
+    okhttpUrlconnectionVersion = '2.1.0'
+
+    //dependency injection
+    butterknifeVersion = '8.2.1'
+    daggerVersion      = '2.0'
+    daggerCompiler     = '2.0'
+
+    //event bus
+    eventBusVersion = '3.0.0'
+
+    //components libraries
+    supportLibraryVersion = '24.1.1'
+    rippleeffectVersion   = '1.3'
+    bootstrapVersion      = '2.0.1'
+
+    rxAndroidVersion          = '1.0.1'
+    rxJavaVersion             = '1.0.14'
+    playServiceMapsVersion    = '8.4.0'
+    converterGsonVersion      = '2.0.0-beta2'
+    adapterRxjavaVersion      = '2.0.0-beta2'
+    converterSimplexmlVersion = '2.1.0'
+    javaxAnnotationVersion    = '10.0-b28'
+}
