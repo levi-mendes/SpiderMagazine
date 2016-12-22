@@ -17,9 +17,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.DetalhesActivity" />
+        <activity
+            android:name=".activities.DetalhesActivity"
+            android:label="@string/title_activity_detalhes"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activities.CapaActivity" />
-        <activity android:name=".activities.SobreActivity"></activity>
+        <activity android:name=".activities.SobreActivity" />
     </application>
 
 </manifest>

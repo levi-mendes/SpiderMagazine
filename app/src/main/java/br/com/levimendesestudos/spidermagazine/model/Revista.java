@@ -11,4 +11,9 @@ public class Revista {
     public String description;
     public String thumbnailPath;
     public int issueNumber;
+
+    public String title;
+    public String date;
+    public String price;
+    public int pageCount;
 }
