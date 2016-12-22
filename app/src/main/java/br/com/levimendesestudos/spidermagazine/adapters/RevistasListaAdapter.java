@@ -56,7 +56,9 @@ public class RevistasListaAdapter extends BaseAdapter {
         Revista revista = mList.get(i);
 
         tvIssueNumber.setText(valueOf(revista.issueNumber));
-        Picasso.with(mContext).load(revista.thumbnailPath).into(ivRevista);
+        Picasso.with(mContext)
+                .load(revista.thumbnailPath)
+                .into(ivRevista);
 
         return view;
     }

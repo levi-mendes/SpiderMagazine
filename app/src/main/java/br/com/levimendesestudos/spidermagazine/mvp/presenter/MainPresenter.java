@@ -30,6 +30,8 @@ public class MainPresenter implements MainMVP.Presenter {
 
     @Override
     public void buscarRevistas() {
+        mView.showPbProcessamento();
+
         mSpiderApi.comics()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -49,6 +51,7 @@ public class MainPresenter implements MainMVP.Presenter {
                 public void onNext(Hero hero) {
                     mView.carregarLista(hero.revistas);
                     mView.copyRight(hero.copyright);
+                    mView.hidePbProcessamento();
                 }
             });
     }

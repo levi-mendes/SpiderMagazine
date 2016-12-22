@@ -39,13 +39,14 @@ public class RevistaDeserializer implements JsonDeserializer<Object> {
             int issueNumber     = jsonObject.get("issueNumber").getAsInt();
 
             JsonObject thumbnail = jsonObject.getAsJsonObject("thumbnail");
+            String extension     = thumbnail.get("extension").getAsString();
             String thumbnailPath = thumbnail.get("path").getAsString();
 
             Revista revista = new Revista();
 
             revista.id            = id;
             revista.description   = description;
-            revista.thumbnailPath = thumbnailPath;
+            revista.thumbnailPath = thumbnailPath + "/portrait_medium." + extension;
             revista.issueNumber   = issueNumber;
 
             revistas.add(revista);

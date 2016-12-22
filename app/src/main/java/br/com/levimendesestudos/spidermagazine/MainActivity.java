@@ -4,7 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 import android.widget.GridView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.List;
@@ -24,6 +26,8 @@ public class MainActivity extends AppCompatActivity implements MainMVP.View {
     TextView tvCopyright;
     @BindView(R.id.gvRevistas)
     GridView gvRevistas;
+    @BindView(R.id.pbProcessamento)
+    ProgressBar pbProcessamento;
 
     private MainPresenter mPresenter;
 
@@ -52,5 +56,15 @@ public class MainActivity extends AppCompatActivity implements MainMVP.View {
     public void carregarLista(List<Revista> revistas) {
         RevistasListaAdapter adapter = new RevistasListaAdapter(this, revistas);
         gvRevistas.setAdapter(adapter);
+    }
+
+    @Override
+    public void showPbProcessamento() {
+     pbProcessamento.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hidePbProcessamento() {
+        pbProcessamento.setVisibility(View.INVISIBLE);
     }
 }
