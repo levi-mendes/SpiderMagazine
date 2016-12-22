@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements MainMVP.View {
 
         setSupportActionBar(toolbar);
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setIcon(R.mipmap.img_marvel_logo);
+        //getSupportActionBar().setIcon(R.mipmap.img_marvel_logo);
         getSupportActionBar().setTitle("");
 
         mPresenter = new MainPresenter(this);

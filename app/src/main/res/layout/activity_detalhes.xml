@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_activity"
     android:fitsSystemWindows="true"
     tools:context="br.com.levimendesestudos.spidermagazine.activities.DetalhesActivity">
 
@@ -12,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/app_bar_height"
         android:fitsSystemWindows="true"
+        android:background="@mipmap/header_spiderman"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.design.widget.CollapsingToolbarLayout
@@ -35,11 +37,21 @@
 
     <include layout="@layout/content_detalhes" />
 
-    <ImageView
-        android:src="@mipmap/ic_launcher"
-        app:layout_anchorGravity="bottom|end|left"
-        android:id="@+id/ivRevista"
+    <LinearLayout
+        android:layout_margin="@dimen/fab_margin"
+        android:background="#FFF"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:padding="2dp"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            android:id="@+id/ivRevista"
+            app:layout_anchor="@id/app_bar"
+            app:layout_anchorGravity="bottom|end|left"
+            app:srcCompat="@android:drawable/ic_dialog_email" />
+
+    </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>

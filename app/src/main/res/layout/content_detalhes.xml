@@ -9,11 +9,16 @@
     tools:showIn="@layout/activity_detalhes">
 
     <LinearLayout
+        android:layout_marginTop="20dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <TextView
+            android:text="Title"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:textColor="#FFF"
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -21,6 +26,7 @@
             />
 
         <TextView
+            android:textColor="#FFF"
             android:id="@+id/tvDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -28,6 +34,7 @@
             />
 
         <TextView
+            android:textColor="#FFF"
             android:id="@+id/tvDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -36,6 +43,7 @@
             />
 
         <TextView
+            android:textColor="#FFF"
             android:id="@+id/tvPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -44,6 +52,7 @@
             />
 
         <TextView
+            android:textColor="#FFF"
             android:id="@+id/tvPageCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

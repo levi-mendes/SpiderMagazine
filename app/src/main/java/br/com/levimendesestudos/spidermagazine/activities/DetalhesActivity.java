@@ -41,6 +41,7 @@ public class DetalhesActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
 
         Revista revista = (Revista)getIntent().getSerializableExtra("revista");
