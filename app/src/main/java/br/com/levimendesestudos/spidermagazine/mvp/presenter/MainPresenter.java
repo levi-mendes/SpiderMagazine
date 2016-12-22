@@ -1,12 +1,10 @@
 package br.com.levimendesestudos.spidermagazine.mvp.presenter;
 
 import android.util.Log;
-import java.util.List;
 import javax.inject.Inject;
 import br.com.levimendesestudos.spidermagazine.api.SpiderApi;
 import br.com.levimendesestudos.spidermagazine.dagger.DaggerInjector;
 import br.com.levimendesestudos.spidermagazine.model.Hero;
-import br.com.levimendesestudos.spidermagazine.model.Revista;
 import br.com.levimendesestudos.spidermagazine.mvp.contracts.MainMVP;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -29,7 +27,7 @@ public class MainPresenter implements MainMVP.Presenter {
     }
 
     @Override
-    public void buscarRevistas() {
+    public void init() {
         mView.showPbProcessamento();
 
         mSpiderApi.comics()

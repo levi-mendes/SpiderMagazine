@@ -54,7 +54,7 @@ public class RevistaDeserializer implements JsonDeserializer<Object> {
 
             revista.id            = id;
             revista.description   = description;
-            revista.thumbnailPath = thumbnailPath + "/portrait_medium." + extension;
+            revista.thumbnailPath = thumbnailPath;
             revista.issueNumber   = issueNumber;
 
             revista.pageCount = pageCount;

@@ -9,7 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
+//import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -58,17 +59,21 @@ public class RevistasListaAdapter extends BaseAdapter {
         Revista revista = mList.get(i);
 
         tvIssueNumber.setText(valueOf(revista.issueNumber));
-        Picasso.with(mContext)
-                .load(revista.thumbnailPath)
-                .into(ivRevista);
+        /*Picasso.with(mContext)
+                .load(revista.thumbnailPath +  "/portrait_medium.jpg")
+                .into(ivRevista);*/
 
-        ivRevista.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        Glide.with(mContext)
+            .load(revista.thumbnailPath +  "/portrait_medium.jpg")
+            .centerCrop()
+            //.placeholder(R.drawable.loading_spinner)
+            .crossFade()
+            .into(ivRevista);
+
+        ivRevista.setOnClickListener(view1 ->  {
                 Intent intent = new Intent(mContext, DetalhesActivity.class);
                 intent.putExtra("revista", revista);
                 mContext.startActivity(intent);
-            }
         });
 
         return view;

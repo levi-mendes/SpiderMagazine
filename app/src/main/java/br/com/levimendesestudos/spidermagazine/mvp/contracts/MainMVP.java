@@ -11,7 +11,7 @@ import br.com.levimendesestudos.spidermagazine.model.Revista;
 public interface MainMVP {
 
     interface Presenter {
-        void buscarRevistas();
+        void init();
     }
 
     interface View {

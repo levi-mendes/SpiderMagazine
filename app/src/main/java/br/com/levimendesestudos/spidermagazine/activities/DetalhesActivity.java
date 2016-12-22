@@ -1,14 +1,18 @@
 package br.com.levimendesestudos.spidermagazine.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
+
 import br.com.levimendesestudos.spidermagazine.R;
 import br.com.levimendesestudos.spidermagazine.model.Revista;
+import br.com.levimendesestudos.spidermagazine.utils.ToastUtil;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -34,20 +38,27 @@ public class DetalhesActivity extends AppCompatActivity {
     @BindView(R.id.tvPageCount)
     TextView tvPageCount;
 
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalhes);
         ButterKnife.bind(this);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
 
         Revista revista = (Revista)getIntent().getSerializableExtra("revista");
 
-        Picasso.with(this)
-                .load(revista.thumbnailPath)
+        String url = revista.thumbnailPath + "/portrait_medium.jpg";
+
+        Glide.with(this)
+                .load(url)
+                .centerCrop()
+                //.placeholder(R.drawable.loading_spinner)
+                .crossFade()
                 .into(ivRevista);
 
         tvTitle.setText(revista.title);
@@ -55,5 +66,11 @@ public class DetalhesActivity extends AppCompatActivity {
         tvDate.append(revista.date);
         tvPrice.append(valueOf(revista.price));
         tvPageCount.append(valueOf(revista.pageCount));
+
+        ivRevista.setOnClickListener(view -> {
+                Intent intent = new Intent(DetalhesActivity.this, CapaActivity.class);
+                intent.putExtra("revista", revista);
+                startActivity(intent);
+        });
     }
 }

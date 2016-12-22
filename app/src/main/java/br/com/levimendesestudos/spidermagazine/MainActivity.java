@@ -3,14 +3,11 @@ package br.com.levimendesestudos.spidermagazine;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import java.util.List;
-
 import br.com.levimendesestudos.spidermagazine.adapters.RevistasListaAdapter;
 import br.com.levimendesestudos.spidermagazine.model.Revista;
 import br.com.levimendesestudos.spidermagazine.mvp.contracts.MainMVP;
@@ -39,12 +36,10 @@ public class MainActivity extends AppCompatActivity implements MainMVP.View {
         ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        //getSupportActionBar().setIcon(R.mipmap.img_marvel_logo);
         getSupportActionBar().setTitle("");
 
         mPresenter = new MainPresenter(this);
-        mPresenter.buscarRevistas();
+        mPresenter.init();
     }
 
     @Override

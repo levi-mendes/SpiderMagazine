@@ -8,6 +8,14 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/background_activity"
     tools:context="br.com.levimendesestudos.spidermagazine.activities.CapaActivity">
+
+    <!--   216x324px   -->
+    <ImageView
+        android:layout_centerInParent="true"
+        android:id="@+id/ivRevistaCapa"
+        android:layout_width="216dp"
+        android:layout_height="324dp" />
 
 </RelativeLayout>

@@ -69,4 +69,5 @@ ext {
     converterSimplexmlVersion = '2.1.0'
     javaxAnnotationVersion    = '10.0-b28'
     picassoVersion            = '2.5.2'
+    glideVersion              = '3.7.0'
 }
