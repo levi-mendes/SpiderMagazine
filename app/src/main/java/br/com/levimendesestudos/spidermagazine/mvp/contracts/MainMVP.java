@@ -16,5 +16,6 @@ public interface MainMVP {
 
     interface View {
         void carregarLista(List<Revista> revistas);
+        void copyRight(String s);
     }
 }

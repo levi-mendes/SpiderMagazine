@@ -11,6 +11,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.levimendesestudos.spidermagazine.model.Hero;
 import br.com.levimendesestudos.spidermagazine.model.Revista;
 
 /**
@@ -21,8 +22,11 @@ public class RevistaDeserializer implements JsonDeserializer<Object> {
 
     @Override
     public Object deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-        List<Revista> retorno = new ArrayList<>();
+        Hero retorno = new Hero();
+        List<Revista> revistas = new ArrayList<>();
         JsonObject root = json.getAsJsonObject();
+        retorno.copyright = root.get("copyright").getAsString();
+
         JsonObject data = root.getAsJsonObject("data");
         JsonArray results = data.getAsJsonArray("results");
 
@@ -32,6 +36,7 @@ public class RevistaDeserializer implements JsonDeserializer<Object> {
 
             int     id          = jsonObject.get("id").getAsInt();
             String  description = jsonObject.get("description").getAsString();
+            int issueNumber     = jsonObject.get("issueNumber").getAsInt();
 
             JsonObject thumbnail = jsonObject.getAsJsonObject("thumbnail");
             String thumbnailPath = thumbnail.get("path").getAsString();
@@ -41,9 +46,12 @@ public class RevistaDeserializer implements JsonDeserializer<Object> {
             revista.id            = id;
             revista.description   = description;
             revista.thumbnailPath = thumbnailPath;
+            revista.issueNumber   = issueNumber;
 
-            retorno.add(revista);
+            revistas.add(revista);
         }
+
+        retorno.revistas = revistas;
 
         return retorno;
     }

@@ -1,6 +1,8 @@
 package br.com.levimendesestudos.spidermagazine.api;
 
 import java.util.List;
+
+import br.com.levimendesestudos.spidermagazine.model.Hero;
 import br.com.levimendesestudos.spidermagazine.model.Revista;
 import retrofit.http.GET;
 import retrofit.http.Headers;
@@ -17,5 +19,5 @@ public interface SpiderApi {
 
     @Headers(CT_APP_JSON)
     @GET("comics?ts=1&apikey=bb4470a46d0659a43c566ac6056ed48d&hash=479474cf0a28eac9998960da4d96f06b")
-    Observable<List<Revista>> comics();
+    Observable<Hero> comics();
 }

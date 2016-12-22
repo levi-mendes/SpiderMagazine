@@ -4,9 +4,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.widget.GridView;
+import android.widget.TextView;
 
 import java.util.List;
 
+import br.com.levimendesestudos.spidermagazine.adapters.RevistasListaAdapter;
 import br.com.levimendesestudos.spidermagazine.model.Revista;
 import br.com.levimendesestudos.spidermagazine.mvp.contracts.MainMVP;
 import br.com.levimendesestudos.spidermagazine.mvp.presenter.MainPresenter;
@@ -17,6 +20,10 @@ public class MainActivity extends AppCompatActivity implements MainMVP.View {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @BindView(R.id.tvCopyright)
+    TextView tvCopyright;
+    @BindView(R.id.gvRevistas)
+    GridView gvRevistas;
 
     private MainPresenter mPresenter;
 
@@ -30,15 +37,20 @@ public class MainActivity extends AppCompatActivity implements MainMVP.View {
         setSupportActionBar(toolbar);
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setIcon(R.mipmap.img_marvel_logo);
+        getSupportActionBar().setTitle("");
 
         mPresenter = new MainPresenter(this);
         mPresenter.buscarRevistas();
     }
 
     @Override
+    public void copyRight(String s) {
+        tvCopyright.setText(s);
+    }
+
+    @Override
     public void carregarLista(List<Revista> revistas) {
-        Log.e("carregarLista", "" + revistas.size());
-        Log.e("carregarLista", "" + revistas.isEmpty());
-        //TODO
+        RevistasListaAdapter adapter = new RevistasListaAdapter(this, revistas);
+        gvRevistas.setAdapter(adapter);
     }
 }

@@ -67,4 +67,5 @@ dependencies {
     compile "com.squareup.retrofit:adapter-rxjava:$rootProject.adapterRxjavaVersion"
 
     compile "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"//comunicacao com web service REST
+    compile "com.squareup.picasso:picasso:$rootProject.picassoVersion"
 }

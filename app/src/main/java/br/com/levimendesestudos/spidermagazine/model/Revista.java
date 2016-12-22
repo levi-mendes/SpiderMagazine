@@ -10,4 +10,5 @@ public class Revista {
     public int id;
     public String description;
     public String thumbnailPath;
+    public int issueNumber;
 }

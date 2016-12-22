@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 import br.com.levimendesestudos.spidermagazine.api.SpiderApi;
 import br.com.levimendesestudos.spidermagazine.dagger.DaggerInjector;
+import br.com.levimendesestudos.spidermagazine.model.Hero;
 import br.com.levimendesestudos.spidermagazine.model.Revista;
 import br.com.levimendesestudos.spidermagazine.mvp.contracts.MainMVP;
 import rx.Subscriber;
@@ -30,24 +31,25 @@ public class MainPresenter implements MainMVP.Presenter {
     @Override
     public void buscarRevistas() {
         mSpiderApi.comics()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<List<Revista>>() {
-                    @Override
-                    public void onCompleted() {
-                        unsubscribe();
-                    }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(new Subscriber<Hero>() {
+                @Override
+                public void onCompleted() {
+                    unsubscribe();
+                }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        unsubscribe();
-                        Log.e("onError", e.getMessage(), e);
-                    }
+                @Override
+                public void onError(Throwable e) {
+                    unsubscribe();
+                    Log.e("onError", e.getMessage(), e);
+                }
 
-                    @Override
-                    public void onNext(List<Revista> revistas) {
-                        mView.carregarLista(revistas);
-                    }
-                });
+                @Override
+                public void onNext(Hero hero) {
+                    mView.carregarLista(hero.revistas);
+                    mView.copyRight(hero.copyright);
+                }
+            });
     }
 }

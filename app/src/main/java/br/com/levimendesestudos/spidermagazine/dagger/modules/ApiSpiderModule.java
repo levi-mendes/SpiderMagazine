@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 import br.com.levimendesestudos.spidermagazine.api.SpiderApi;
 import br.com.levimendesestudos.spidermagazine.deserializers.RevistaDeserializer;
+import br.com.levimendesestudos.spidermagazine.model.Hero;
 import dagger.Module;
 import dagger.Provides;
 import retrofit.GsonConverterFactory;
@@ -24,7 +25,7 @@ public class ApiSpiderModule {
 
     @Provides
     SpiderApi providesSpiderApi() {
-        Gson gson = new GsonBuilder().registerTypeAdapter(List.class, new RevistaDeserializer()).create();
+        Gson gson = new GsonBuilder().registerTypeAdapter(Hero.class, new RevistaDeserializer()).create();
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(SpiderApi.URL)
