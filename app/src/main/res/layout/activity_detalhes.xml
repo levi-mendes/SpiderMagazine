@@ -43,6 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
+        <!--app:srcCompat="@android:drawable/ic_dialog_email"-->
         <ImageView
             android:padding="2dp"
             android:layout_width="100dp"
@@ -50,7 +51,7 @@
             android:id="@+id/ivRevista"
             app:layout_anchor="@id/app_bar"
             app:layout_anchorGravity="bottom|end|left"
-            app:srcCompat="@android:drawable/ic_dialog_email" />
+            />
 
     </LinearLayout>
 

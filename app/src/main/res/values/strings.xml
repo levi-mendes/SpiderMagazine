@@ -5,5 +5,7 @@
     <string name="published">Published:</string>
     <string name="price">Price:</string>
     <string name="pages">Pages:</string>
+    <string name="sobre">Sobre</string>
+    <string name="profile">Profile</string>
 
 </resources>
