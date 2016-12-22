@@ -38,9 +38,13 @@ public class RevistaDeserializer implements JsonDeserializer<Object> {
             String  description = jsonObject.get("description").getAsString();
             int issueNumber     = jsonObject.get("issueNumber").getAsInt();
             String title        = jsonObject.get("title").getAsString();
+            int pageCount       = jsonObject.get("pageCount").getAsInt();
 
-            String dates  =      jsonObject.getAsJsonArray("dates").get(0).getAsJsonObject().get("onsaleDate").getAsString();
-            String prices =
+            JsonElement dates  =      jsonObject.getAsJsonArray("dates").get(0);
+            String date        = dates.getAsJsonObject().get("date").getAsString();
+
+            JsonElement prices = jsonObject.getAsJsonArray("prices").get(0);
+            double price       = prices.getAsJsonObject().get("price").getAsDouble();
 
             JsonObject thumbnail = jsonObject.getAsJsonObject("thumbnail");
             String extension     = thumbnail.get("extension").getAsString();
@@ -53,11 +57,10 @@ public class RevistaDeserializer implements JsonDeserializer<Object> {
             revista.thumbnailPath = thumbnailPath + "/portrait_medium." + extension;
             revista.issueNumber   = issueNumber;
 
-            revista.title = title;
-
-            revista.date = dates;
-            public String price;
-            public int pageCount;
+            revista.pageCount = pageCount;
+            revista.title     = title;
+            revista.date      = date;
+            revista.price     = price;
 
             revistas.add(revista);
         }

@@ -1,6 +1,7 @@
 package br.com.levimendesestudos.spidermagazine.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import br.com.levimendesestudos.spidermagazine.R;
+import br.com.levimendesestudos.spidermagazine.activities.DetalhesActivity;
 import br.com.levimendesestudos.spidermagazine.model.Revista;
 
 import static java.lang.String.valueOf;
@@ -59,6 +61,15 @@ public class RevistasListaAdapter extends BaseAdapter {
         Picasso.with(mContext)
                 .load(revista.thumbnailPath)
                 .into(ivRevista);
+
+        ivRevista.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, DetalhesActivity.class);
+                intent.putExtra("revista", revista);
+                mContext.startActivity(intent);
+            }
+        });
 
         return view;
     }
