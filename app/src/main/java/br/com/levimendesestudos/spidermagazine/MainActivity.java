@@ -65,6 +65,6 @@ public class MainActivity extends AppCompatActivity implements MainMVP.View {
 
     @Override
     public void hidePbProcessamento() {
-        pbProcessamento.setVisibility(View.INVISIBLE);
+        pbProcessamento.setVisibility(View.GONE);
     }
 }
