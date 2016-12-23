@@ -50,7 +50,7 @@
             android:layout_height="150dp"
             android:id="@+id/ivRevista"
             app:layout_anchor="@id/app_bar"
-            app:layout_anchorGravity="bottom|end|left"
+            app:layout_anchorGravity="bottom|end|right"
             />
 
     </LinearLayout>

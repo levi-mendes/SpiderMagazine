@@ -49,6 +49,7 @@ public class DetalhesActivity extends AppCompatActivity {
 
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Revista revista = (Revista)getIntent().getSerializableExtra("revista");
 

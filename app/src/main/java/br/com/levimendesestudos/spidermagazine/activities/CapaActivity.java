@@ -8,11 +8,13 @@ import br.com.levimendesestudos.spidermagazine.R;
 import br.com.levimendesestudos.spidermagazine.model.Revista;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class CapaActivity extends AppCompatActivity {
 
     @BindView(R.id.ivRevistaCapa)
     ImageView ivRevistaCapa;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,5 +36,10 @@ public class CapaActivity extends AppCompatActivity {
                 //.placeholder(R.drawable.loading_spinner)
                 .crossFade()
                 .into(ivRevistaCapa);
+    }
+
+    @OnClick(R.id.ivFechar)
+    public void ivFechar() {
+        onBackPressed();
     }
 }
