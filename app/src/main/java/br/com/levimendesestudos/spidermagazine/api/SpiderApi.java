@@ -1,9 +1,6 @@
 package br.com.levimendesestudos.spidermagazine.api;
 
-import java.util.List;
-
 import br.com.levimendesestudos.spidermagazine.model.Hero;
-import br.com.levimendesestudos.spidermagazine.model.Revista;
 import retrofit.http.GET;
 import retrofit.http.Headers;
 import rx.Observable;

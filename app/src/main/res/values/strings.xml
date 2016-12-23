@@ -3,7 +3,7 @@
     <string name="title_activity_detalhes">DetalhesActivity</string>
     <string name="action_settings">Settings</string>
     <string name="published">Published:</string>
-    <string name="price">Price:</string>
+    <string name="price">Price: $ </string>
     <string name="pages">Pages:</string>
     <string name="sobre">Sobre</string>
     <string name="profile">Profile</string>

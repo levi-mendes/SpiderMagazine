@@ -2,23 +2,19 @@ package br.com.levimendesestudos.spidermagazine.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
-
 import br.com.levimendesestudos.spidermagazine.R;
 import br.com.levimendesestudos.spidermagazine.model.Revista;
-import br.com.levimendesestudos.spidermagazine.utils.ToastUtil;
+import br.com.levimendesestudos.spidermagazine.mvp.contracts.DetalhesMVP;
+import br.com.levimendesestudos.spidermagazine.mvp.presenter.DetalhesPresenter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
 import static java.lang.String.valueOf;
 
-public class DetalhesActivity extends BaseActivity {
+public class DetalhesActivity extends BaseActivity implements DetalhesMVP.View {
 
     @BindView(R.id.ivRevista)
     ImageView ivRevista;
@@ -41,6 +37,9 @@ public class DetalhesActivity extends BaseActivity {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
+    private DetalhesPresenter mPresenter;
+    private Revista mRevista;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,9 +50,15 @@ public class DetalhesActivity extends BaseActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Revista revista = (Revista)getIntent().getSerializableExtra("revista");
+        mRevista = (Revista)getIntent().getSerializableExtra("revista");
 
-        String url = revista.thumbnailPath + "/portrait_medium.jpg";
+        mPresenter = new DetalhesPresenter(this);
+        mPresenter.init();
+    }
+
+    @Override
+    public void carregarDados() {
+        String url = mRevista.thumbnailPath + "/portrait_medium.jpg";
 
         Glide.with(this)
                 .load(url)
@@ -62,16 +67,19 @@ public class DetalhesActivity extends BaseActivity {
                 .crossFade()
                 .into(ivRevista);
 
-        tvTitle.setText(revista.title);
-        tvDescription.setText(revista.description);
-        tvDate.append(revista.date);
-        tvPrice.append(valueOf(revista.price));
-        tvPageCount.append(valueOf(revista.pageCount));
+        tvTitle.setText(mRevista.title);
+        tvDescription.setText(mRevista.description);
+        tvDate.append(mRevista.date);
+        tvPrice.append(valueOf(mRevista.price));
+        tvPageCount.append(valueOf(mRevista.pageCount));
 
-        ivRevista.setOnClickListener(view -> {
-                Intent intent = new Intent(DetalhesActivity.this, CapaActivity.class);
-                intent.putExtra("revista", revista);
-                startActivity(intent);
-        });
+        ivRevista.setOnClickListener(view -> chamarTelaCapa());
+    }
+
+    @Override
+    public void chamarTelaCapa() {
+        Intent intent = new Intent(DetalhesActivity.this, CapaActivity.class);
+        intent.putExtra("revista", mRevista);
+        startActivity(intent);
     }
 }

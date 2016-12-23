@@ -2,9 +2,7 @@ package br.com.levimendesestudos.spidermagazine.dagger.modules;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
-
 import br.com.levimendesestudos.spidermagazine.api.SpiderApi;
 import br.com.levimendesestudos.spidermagazine.deserializers.RevistaDeserializer;
 import br.com.levimendesestudos.spidermagazine.model.Hero;
