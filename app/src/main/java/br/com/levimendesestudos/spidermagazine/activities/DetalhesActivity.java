@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
 
 import static java.lang.String.valueOf;
 
-public class DetalhesActivity extends AppCompatActivity {
+public class DetalhesActivity extends BaseActivity {
 
     @BindView(R.id.ivRevista)
     ImageView ivRevista;

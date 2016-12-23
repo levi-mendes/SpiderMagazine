@@ -25,15 +25,12 @@ public class CapaActivity extends AppCompatActivity {
 
         Revista revista = (Revista)getIntent().getSerializableExtra("revista");
 
-        //revista.thumbnailPath +  "/portrait_medium.jpg"
-        //portrait_uncanny
-
-        String url = revista.thumbnailPath + "/portrait_incredible.jpg";
+        String url = revista.thumbnailPath + "/portrait_uncanny.jpg";
 
         Glide.with(this)
                 .load(url)
                 .centerCrop()
-                //.placeholder(R.drawable.loading_spinner)
+                //.placeholder(R.drawable.loading)
                 .crossFade()
                 .into(ivRevistaCapa);
     }
