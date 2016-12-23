@@ -102,8 +102,8 @@ public class SobreActivity extends BaseActivity {
 
     private void enviarEmail(String email) {
         Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", email, null));
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT,      "Assunto");
-        emailIntent.putExtra(Intent.EXTRA_TEXT,         "Corpo email");
-        startActivity(Intent.createChooser(emailIntent, "Enviar email..."));
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT,      getString(R.string.assunto));
+        emailIntent.putExtra(Intent.EXTRA_TEXT,         getString(R.string.corpo_email));
+        startActivity(Intent.createChooser(emailIntent, getString(R.string.enviar_email_usando)));
     }
 }

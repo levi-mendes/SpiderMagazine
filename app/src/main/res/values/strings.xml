@@ -8,4 +8,7 @@
     <string name="sobre">Sobre</string>
     <string name="profile">Profile</string>
     <string name="texto_sobre">Levi José da Silva Mendes\n\n\nDesenvolvedor desde 2009\n\n</string>
+    <string name="enviar_email_usando">Enviar email usando...</string>
+    <string name="corpo_email">Corpo email</string>
+    <string name="assunto">Assunto</string>
 </resources>
