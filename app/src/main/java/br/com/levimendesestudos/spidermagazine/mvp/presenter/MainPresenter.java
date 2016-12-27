@@ -2,6 +2,8 @@ package br.com.levimendesestudos.spidermagazine.mvp.presenter;
 
 import android.util.Log;
 import javax.inject.Inject;
+
+import br.com.levimendesestudos.spidermagazine.R;
 import br.com.levimendesestudos.spidermagazine.api.SpiderApi;
 import br.com.levimendesestudos.spidermagazine.dagger.DaggerInjector;
 import br.com.levimendesestudos.spidermagazine.model.Hero;
@@ -47,10 +49,21 @@ public class MainPresenter implements MainMVP.Presenter {
 
                 @Override
                 public void onNext(Hero hero) {
+                    if (!mView.isActive())
+                        return;
+
                     mView.carregarLista(hero.revistas);
                     mView.copyRight(hero.copyright);
                     mView.hidePbProcessamento();
                 }
             });
+    }
+
+    @Override
+    public void navigate(int id) {
+        switch (id) {
+            case R.id.action_profile:
+                mView.callSobreActivity();
+        }
     }
 }
