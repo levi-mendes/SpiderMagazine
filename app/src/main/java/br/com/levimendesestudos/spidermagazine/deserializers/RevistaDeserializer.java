@@ -34,17 +34,14 @@ public class RevistaDeserializer implements JsonDeserializer<Object> {
         for (JsonElement element : results) {
             JsonObject jsonObject   = element.getAsJsonObject();
 
-            int     id          = jsonObject.get("id").getAsInt();
-            String  description = jsonObject.get("description").getAsString();
-            int issueNumber     = jsonObject.get("issueNumber").getAsInt();
-            String title        = jsonObject.get("title").getAsString();
-            int pageCount       = jsonObject.get("pageCount").getAsInt();
+            int    id          = jsonObject.get("id").getAsInt();
+            String description = joToString(jsonObject, "description");
+            int    issueNumber = jsonObject.get("issueNumber").getAsInt();
+            String title       = jsonObject.get("title").getAsString();
+            int    pageCount   = jsonObject.get("pageCount").getAsInt();
 
-            JsonElement dates  =      jsonObject.getAsJsonArray("dates").get(0);
-            String date        = dates.getAsJsonObject().get("date").getAsString();
-
-            JsonElement prices = jsonObject.getAsJsonArray("prices").get(0);
-            double price       = prices.getAsJsonObject().get("price").getAsDouble();
+            String date        = date(jsonObject.getAsJsonArray("dates").get(0));
+            double price       = price(jsonObject.getAsJsonArray("prices").get(0));
 
             JsonObject thumbnail = jsonObject.getAsJsonObject("thumbnail");
             String extension     = thumbnail.get("extension").getAsString();
@@ -68,5 +65,24 @@ public class RevistaDeserializer implements JsonDeserializer<Object> {
         retorno.revistas = revistas;
 
         return retorno;
+    }
+
+    /**
+     *
+     * pega uma string dentro de um jsonobject
+     * @param jo
+     * @param fieldName
+     * @return
+     */
+    private String joToString(JsonObject jo, String fieldName) {
+        return jo.get(fieldName).getAsString();
+    }
+
+    private String date(JsonElement dates) {
+        return dates.getAsJsonObject().get("date").getAsString();
+    }
+
+    private double price(JsonElement prices) {
+        return prices.getAsJsonObject().get("price").getAsDouble();
     }
 }
