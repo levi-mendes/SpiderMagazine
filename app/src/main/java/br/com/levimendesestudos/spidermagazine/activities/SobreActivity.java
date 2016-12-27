@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import br.com.levimendesestudos.spidermagazine.R;
+import br.com.levimendesestudos.spidermagazine.mvp.contracts.SobreMVP;
+import br.com.levimendesestudos.spidermagazine.mvp.presenter.SobrePresenter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import android.support.v7.widget.Toolbar;
@@ -13,13 +15,14 @@ import android.text.style.ClickableSpan;
 import android.view.View;
 import android.widget.TextView;
 
-public class SobreActivity extends BaseActivity {
+public class SobreActivity extends BaseActivity implements SobreMVP.View {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.tvLinks)
     TextView tvLinks;
     private SpannableStringBuilder spanLinks = new SpannableStringBuilder();
+    private SobrePresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +36,15 @@ public class SobreActivity extends BaseActivity {
         getSupportActionBar().setTitle(R.string.profile);
         toolbar.setNavigationOnClickListener(view -> onBackPressed());
 
-        links();
+        mPresenter = new SobrePresenter(this);
+        mPresenter.init();
     }
 
     /**
      * Adiciona os links
      */
-    private void links() {
+    @Override
+    public void adddLinks() {
         adicionarLinkEmail("Email:   ", "levi.silva.mendes@gmail.com");
         adicionarLink("Linkedin:   ",   "https://br.linkedin.com/in/levi-mendes-56567035");
         adicionarLink("Github:   ",     "https://github.com/levi-mendes");
@@ -55,7 +60,8 @@ public class SobreActivity extends BaseActivity {
      * @param titulo
      * @param email
      */
-    private void adicionarLinkEmail(String titulo, String email) {
+    @Override
+    public void adicionarLinkEmail(String titulo, String email) {
         spanLinks.append(titulo);
         spanLinks.append(email);
         spanLinks.setSpan(clickEnviarEmail(email), spanLinks.length() - email.length(), spanLinks.length(), 0);
@@ -63,7 +69,8 @@ public class SobreActivity extends BaseActivity {
 
     }
 
-    private void adicionarLink(String titulo, String link) {
+    @Override
+    public void adicionarLink(String titulo, String link) {
         spanLinks.append(titulo);
         spanLinks.append(link);
         spanLinks.setSpan(abrirLink(link), spanLinks.length() - link.length(), spanLinks.length(), 0);
@@ -76,18 +83,20 @@ public class SobreActivity extends BaseActivity {
      * @return
      */
     private ClickableSpan abrirLink(String link) {
-        ClickableSpan clickableSpan = new ClickableSpan() {
+        return new ClickableSpan() {
             @Override
             public void onClick(View widget) {
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(link));
-                startActivity(i);
+                abrirPagina(link);
             }
         };
-
-        return clickableSpan;
     }
 
+    @Override
+    public void abrirPagina(String link) {
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(link));
+        startActivity(i);
+    }
 
     private ClickableSpan clickEnviarEmail(String email) {
         ClickableSpan clickableSpan = new ClickableSpan() {
@@ -100,10 +109,11 @@ public class SobreActivity extends BaseActivity {
         return clickableSpan;
     }
 
-    private void enviarEmail(String email) {
+    @Override
+    public void enviarEmail(String email) {
         Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", email, null));
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT,      getString(R.string.assunto));
-        emailIntent.putExtra(Intent.EXTRA_TEXT,         getString(R.string.corpo_email));
-        startActivity(Intent.createChooser(emailIntent, getString(R.string.enviar_email_usando)));
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT,            getString(R.string.assunto));
+        emailIntent.putExtra(Intent.EXTRA_TEXT,               getString(R.string.corpo_email));
+        startActivity(Intent.createChooser(emailIntent,       getString(R.string.enviar_email_usando)));
     }
 }
