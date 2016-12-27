@@ -12,7 +12,6 @@ import android.widget.GridView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import java.util.List;
-
 import br.com.levimendesestudos.spidermagazine.activities.SobreActivity;
 import br.com.levimendesestudos.spidermagazine.adapters.RevistasListaAdapter;
 import br.com.levimendesestudos.spidermagazine.model.Revista;
@@ -76,17 +75,22 @@ public class MainActivity extends AppCompatActivity implements MainMVP.View {
         return true;
     }
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_profile:
-                Intent intent = new Intent(MainActivity.this, SobreActivity.class);
-                startActivity(intent);
-                return true;
+        mPresenter.navigate(item.getItemId());
 
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+        return true;
+    }
+
+    @Override
+    public void callSobreActivity() {
+        Intent intent = new Intent(MainActivity.this, SobreActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public boolean isActive() {
+        //TODO
+        return true;
     }
 }
