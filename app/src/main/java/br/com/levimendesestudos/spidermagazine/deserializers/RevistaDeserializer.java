@@ -1,5 +1,7 @@
 package br.com.levimendesestudos.spidermagazine.deserializers;
 
+import android.util.Log;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
@@ -75,7 +77,16 @@ public class RevistaDeserializer implements JsonDeserializer<Object> {
      * @return
      */
     private String joToString(JsonObject jo, String fieldName) {
-        return jo.get(fieldName).getAsString();
+        String retorno = "";
+
+        try {
+            retorno = jo.get(fieldName) != null ? jo.get(fieldName).getAsString() : "";
+
+        } catch (UnsupportedOperationException e) {
+            Log.e("joToString", "UnsupportedOperationException");
+        }
+
+        return retorno;
     }
 
     private String date(JsonElement dates) {
