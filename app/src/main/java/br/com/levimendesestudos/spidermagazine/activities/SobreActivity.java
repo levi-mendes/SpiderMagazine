@@ -45,11 +45,11 @@ public class SobreActivity extends BaseActivity implements SobreMVP.View {
      */
     @Override
     public void adddLinks() {
-        adicionarLinkEmail("Email:   ", "levi.silva.mendes@gmail.com");
-        adicionarLink("Linkedin:   ",   "https://br.linkedin.com/in/levi-mendes-56567035");
-        adicionarLink("Github:   ",     "https://github.com/levi-mendes");
-        adicionarLink("Bitbucket:   ",  "https://bitbucket.org/levi-mendes/");
-        adicionarLink("Facebook:   ",   "https://m.facebook.com/profile.php?id=100010499918526");
+        adicionarLinkEmail("Email: ", "levi.silva.mendes@gmail.com");
+        adicionarLink("Linkedin:   ", "https://br.linkedin.com/in/levi-mendes-56567035");
+        adicionarLink("Github:     ", "https://github.com/levi-mendes");
+        adicionarLink("Bitbucket:  ", "https://bitbucket.org/levi-mendes/");
+        adicionarLink("Facebook:   ", "https://m.facebook.com/profile.php?id=100010499918526");
 
         tvLinks.setMovementMethod(LinkMovementMethod.getInstance());
         tvLinks.setText(spanLinks, TextView.BufferType.SPANNABLE);

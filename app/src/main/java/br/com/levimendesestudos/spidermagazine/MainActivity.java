@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements MainMVP.View {
 
     @Override
     public void copyRight(String s) {
-        tvCopyright.setText(s);
+        //tvCopyright.setText(s);
     }
 
     @Override

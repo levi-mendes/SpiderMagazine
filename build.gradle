@@ -3,19 +3,18 @@
 buildscript {
     repositories {
         jcenter()
+        maven { url 'http://repo1.maven.org/maven2' }
     }
+
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.3'
-        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'
-        //classpath 'com.android.tools.build:gradle:2.2.0-alpha3'
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        classpath 'com.android.tools.build:gradle:2.3.2'
     }
 }
 
 allprojects {
     repositories {
         jcenter()
+        maven { url 'http://repo1.maven.org/maven2' }
     }
 }
 
@@ -27,50 +26,49 @@ task clean(type: Delete) {
 ext {
     // Sdk and tools
 
-    minSdkVersion     = 16
+    minSdkVersion     = 21
     targetSdkVersion  = 23
-    compileSdkVersion = 24
-    buildToolsVersion = '24.0.1'
+    compileSdkVersion = 25
+    buildToolsVersion = '25.0.1'
 
-    versionCode = 1
-    versionName = '1.0.0'
+    versionCode = 5
+    versionName = '1.0.4'
 
     //test libraries
-    junitVersion       = '4.12'
-    hamcrestVersion    = '1.3'
-    runnerVersion      = '0.5'
-    rulesVersion       = '0.5'
-    espressoVersion    = '2.2.2'
-    mockitoVersion     = '1.10.19'
-    powerMockito       = '1.6.2'
-    robolectricVersion = '3.2.2'
+    junitVersion = '4.12'
+    hamcrestVersion = '1.3'
+    runnerVersion   = '0.5'
+    rulesVersion    = '0.5'
+    espressoVersion = '2.2.2'
+    mockitoVersion  = '1.10.19'
+    powerMockito    = '1.6.2'
 
-            //web services integration
+    //web services integration
     okhttpVersion              = '3.4.1'
     retrofitVersion            = '2.1.0'
     okhttpUrlconnectionVersion = '2.1.0'
 
     //dependency injection
     butterknifeVersion = '8.2.1'
-    daggerVersion      = '2.0'
-    daggerCompiler     = '2.0'
+    daggerVersion      = '2.10'
+    daggerCompiler     = '2.10'
 
     //event bus
-    //eventBusVersion = '3.0.0'
+    eventBusVersion = '3.0.0'
 
     //components libraries
-    supportLibraryVersion = '24.1.1'
+    supportLibraryVersion = '25.0.1'
     rippleeffectVersion   = '1.3'
     bootstrapVersion      = '2.0.1'
 
     rxAndroidVersion          = '1.0.1'
     rxJavaVersion             = '1.0.14'
-    //playServiceMapsVersion    = '8.4.0'
+    playServiceMapsVersion    = '9.6.1'
+    firebaseVersion           = '9.6.1'
     converterGsonVersion      = '2.0.0-beta2'
     adapterRxjavaVersion      = '2.0.0-beta2'
     converterSimplexmlVersion = '2.1.0'
     javaxAnnotationVersion    = '10.0-b28'
-    picassoVersion            = '2.5.2'
-    glideVersion              = '3.7.0'
+
     constraintLayoutVersion   = '1.0.0-beta4'
 }

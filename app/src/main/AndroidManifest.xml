@@ -23,6 +23,9 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activities.CapaActivity" />
         <activity android:name=".activities.SobreActivity" />
+        <activity
+            android:name=".MainActivity222222"
+            android:label="@string/title_activity_main222222"></activity>
     </application>
 
 </manifest>
