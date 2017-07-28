@@ -27,15 +27,20 @@ public class ApiSpiderModule {
     }
 
     @Provides
-    public Retrofit providesRetrofit(GsonConverterFactory converter, OkHttpClient okHttpClient, String endPoint) {
+    public Retrofit providesRetrofit(GsonConverterFactory converter, OkHttpClient okHttpClient, String endPoint, RxJavaCallAdapterFactory factory) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(endPoint)
                 .client(okHttpClient)
                 .addConverterFactory(converter)
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .addCallAdapterFactory(factory)
                 .build();
 
         return retrofit;
+    }
+
+    @Provides
+    public RxJavaCallAdapterFactory providesFactory() {
+        return RxJavaCallAdapterFactory.create();
     }
 
     @Provides
