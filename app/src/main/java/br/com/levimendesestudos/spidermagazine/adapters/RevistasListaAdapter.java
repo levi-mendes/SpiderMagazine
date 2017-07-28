@@ -62,9 +62,9 @@ public class RevistasListaAdapter extends BaseAdapter {
 
         Glide.with(mContext)
             .load(revista.thumbnailPath +  "/portrait_medium.jpg")
-            .centerCrop()
+            //.centerCrop()
             //.placeholder(R.drawable.loading_spinner)
-            .crossFade()
+            //.crossFade()
             .into(ivRevista);
 
         ivRevista.setOnClickListener(view1 ->  {

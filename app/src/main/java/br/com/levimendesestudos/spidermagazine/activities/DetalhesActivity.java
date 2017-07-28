@@ -62,9 +62,9 @@ public class DetalhesActivity extends BaseActivity implements DetalhesMVP.View {
 
         Glide.with(this)
                 .load(url)
-                .centerCrop()
+                //.centerCrop()
                 //.placeholder(R.drawable.loading_spinner)
-                .crossFade()
+                //.crossFade()
                 .into(ivRevista);
 
         tvTitle.setText(mRevista.title);

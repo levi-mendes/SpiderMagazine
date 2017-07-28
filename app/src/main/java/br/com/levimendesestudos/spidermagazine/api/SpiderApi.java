@@ -1,8 +1,8 @@
 package br.com.levimendesestudos.spidermagazine.api;
 
 import br.com.levimendesestudos.spidermagazine.model.Hero;
-import retrofit.http.GET;
-import retrofit.http.Headers;
+import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import rx.Observable;
 
 /**

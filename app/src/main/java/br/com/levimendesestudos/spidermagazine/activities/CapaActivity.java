@@ -29,9 +29,9 @@ public class CapaActivity extends AppCompatActivity {
 
         Glide.with(this)
                 .load(url)
-                .centerCrop()
-                .placeholder(R.drawable.loading)
-                .crossFade()
+                //.centerCrop()
+                //.placeholder(R.drawable.loading)
+                //.crossFade()
                 .into(ivRevistaCapa);
     }
 
