@@ -7,7 +7,6 @@ import br.com.levimendesestudos.spidermagazine.R;
 import br.com.levimendesestudos.spidermagazine.mvp.contracts.SobreMVP;
 import br.com.levimendesestudos.spidermagazine.mvp.presenter.SobrePresenter;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import android.support.v7.widget.Toolbar;
 import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
@@ -25,11 +24,13 @@ public class SobreActivity extends BaseActivity implements SobreMVP.View {
     private SobrePresenter mPresenter;
 
     @Override
+    public int layout() {
+        return R.layout.activity_sobre;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sobre);
-
-        ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

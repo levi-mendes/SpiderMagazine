@@ -10,17 +10,24 @@ import br.com.levimendesestudos.spidermagazine.model.Revista;
 
 public interface MainMVP {
 
-    interface Presenter {
-        void init();
-        void navigate(int id);
+    abstract class Presenter extends BasicPresenter {
+
+        public abstract void navigate(int id);
+
     }
 
-    interface View {
+    interface View extends BasicView {
+
         void callSobreActivity();
+
         void carregarLista(List<Revista> revistas);
+
         void copyRight(String s);
+
         void showPbProcessamento();
+
         void hidePbProcessamento();
-        boolean isActive();
+
     }
+
 }

@@ -6,7 +6,7 @@ import br.com.levimendesestudos.spidermagazine.mvp.contracts.DetalhesMVP;
  * Created by 809778 on 23/12/2016.
  */
 
-public class DetalhesPresenter implements DetalhesMVP.Presenter {
+public class DetalhesPresenter extends DetalhesMVP.Presenter {
 
     private DetalhesMVP.View mView;
 

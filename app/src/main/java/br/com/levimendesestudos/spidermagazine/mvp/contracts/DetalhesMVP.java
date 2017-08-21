@@ -6,12 +6,11 @@ package br.com.levimendesestudos.spidermagazine.mvp.contracts;
 
 public interface DetalhesMVP {
 
-    interface Presenter {
+    abstract class Presenter extends BasicPresenter {
 
-        void init();
     }
 
-    interface View {
+    interface View extends BasicView {
 
         void chamarTelaCapa();
 

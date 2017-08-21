@@ -11,7 +11,6 @@ import br.com.levimendesestudos.spidermagazine.model.Revista;
 import br.com.levimendesestudos.spidermagazine.mvp.contracts.DetalhesMVP;
 import br.com.levimendesestudos.spidermagazine.mvp.presenter.DetalhesPresenter;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import static java.lang.String.valueOf;
 
 public class DetalhesActivity extends BaseActivity implements DetalhesMVP.View {
@@ -41,10 +40,13 @@ public class DetalhesActivity extends BaseActivity implements DetalhesMVP.View {
     private Revista mRevista;
 
     @Override
+    public int layout() {
+        return R.layout.activity_detalhes;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detalhes);
-        ButterKnife.bind(this);
 
         toolbar.setTitle("");
         setSupportActionBar(toolbar);

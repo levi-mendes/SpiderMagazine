@@ -16,7 +16,7 @@ import rx.schedulers.Schedulers;
  * Created by 809778 on 21/12/2016.
  */
 
-public class MainPresenter implements MainMVP.Presenter {
+public class MainPresenter extends MainMVP.Presenter {
 
     private MainMVP.View mView;
     @Inject

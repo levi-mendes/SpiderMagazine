@@ -1,27 +1,26 @@
 package br.com.levimendesestudos.spidermagazine.activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import br.com.levimendesestudos.spidermagazine.R;
 import br.com.levimendesestudos.spidermagazine.model.Revista;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class CapaActivity extends AppCompatActivity {
+public class CapaActivity extends BaseActivity {
 
     @BindView(R.id.ivRevistaCapa)
     ImageView ivRevistaCapa;
 
+    @Override
+    public int layout() {
+        return R.layout.activity_capa;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_capa);
-
-        ButterKnife.bind(this);
 
         Revista revista = (Revista)getIntent().getSerializableExtra("revista");
 

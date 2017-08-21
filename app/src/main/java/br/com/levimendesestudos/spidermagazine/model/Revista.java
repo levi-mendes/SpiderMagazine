@@ -9,6 +9,8 @@ import java.io.Serializable;
  */
 public class Revista implements Serializable {
 
+    private static final long serialVersionUID = 691979549617824460L;
+
     public int id;
     public String description;
     public String thumbnailPath;

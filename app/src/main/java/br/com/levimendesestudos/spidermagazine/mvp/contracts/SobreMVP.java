@@ -6,15 +6,21 @@ package br.com.levimendesestudos.spidermagazine.mvp.contracts;
 
 public interface SobreMVP {
 
-    interface View {
+    interface View extends BasicView {
+
         void adicionarLinkEmail(String titulo, String email);
+
         void adicionarLink(String titulo, String link);
+
         void enviarEmail(String email);
+
         void abrirPagina(String link);
+
         void adddLinks();
+
     }
 
-    interface Presenter {
-        void init();
+    abstract class Presenter extends BasicPresenter {
+
     }
 }
