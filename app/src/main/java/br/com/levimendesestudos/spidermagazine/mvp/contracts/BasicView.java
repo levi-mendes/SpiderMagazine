@@ -8,5 +8,9 @@ public interface BasicView {
 
     boolean isActive();
 
-    //int layout();
+    void showToast(String msg);
+
+    void showToast(int msg);
+
+    int layout();
 }

@@ -2,13 +2,10 @@ package br.com.levimendesestudos.spidermagazine.mvp.presenter;
 
 import android.util.Log;
 import javax.inject.Inject;
-
 import br.com.levimendesestudos.spidermagazine.R;
 import br.com.levimendesestudos.spidermagazine.api.SpiderApi;
 import br.com.levimendesestudos.spidermagazine.dagger.DaggerInjector;
-import br.com.levimendesestudos.spidermagazine.model.Hero;
 import br.com.levimendesestudos.spidermagazine.mvp.contracts.MainMVP;
-import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -20,10 +17,10 @@ public class MainPresenter extends MainMVP.Presenter {
 
     private MainMVP.View mView;
     @Inject
-    SpiderApi mSpiderApi;
+    SpiderApi mApi;
 
     public MainPresenter(MainMVP.View view) {
-        this.mView = view;
+        mView = view;
 
         DaggerInjector.get().inject(this);
     }
@@ -32,30 +29,22 @@ public class MainPresenter extends MainMVP.Presenter {
     public void init() {
         mView.showPbProcessamento();
 
-        mSpiderApi.comics()
+        mApi.comics()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(new Subscriber<Hero>() {
-                @Override
-                public void onCompleted() {
-                    unsubscribe();
-                }
+            .subscribe(hero -> {
 
-                @Override
-                public void onError(Throwable e) {
-                    unsubscribe();
-                    Log.e("onError", e.getMessage(), e);
-                }
+                if (!mView.isActive())
+                    return;
 
-                @Override
-                public void onNext(Hero hero) {
-                    if (!mView.isActive())
-                        return;
+                mView.carregarLista(hero.revistas);
+                mView.copyRight(hero.copyright);
+                mView.hidePbProcessamento();
 
-                    mView.carregarLista(hero.revistas);
-                    mView.copyRight(hero.copyright);
-                    mView.hidePbProcessamento();
-                }
+            }, error ->  {
+
+                Log.e("onError", error.getMessage(), error);
+                mView.showToast(error.getMessage());
             });
     }
 

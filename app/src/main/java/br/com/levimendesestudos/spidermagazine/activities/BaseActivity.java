@@ -2,10 +2,12 @@ package br.com.levimendesestudos.spidermagazine.activities;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import br.com.levimendesestudos.spidermagazine.mvp.contracts.BasicView;
+import br.com.levimendesestudos.spidermagazine.utils.ToastUtil;
 import butterknife.ButterKnife;
 
 /**
@@ -14,13 +16,21 @@ import butterknife.ButterKnife;
 
 public abstract class BaseActivity extends AppCompatActivity implements BasicView {
 
-    public abstract int layout();
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(layout());
         ButterKnife.bind(this);
+    }
+
+    @Override
+    public void showToast(String msg) {
+        ToastUtil.showToast(this, msg);
+    }
+
+    @Override
+    public void showToast(@StringRes int msg) {
+        ToastUtil.showToast(this, getString(msg));
     }
 
     @Override
