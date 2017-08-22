@@ -27,6 +27,11 @@ public class MainPresenter extends MainMVP.Presenter {
 
     @Override
     public void init() {
+        if (!mView.hasInternet()) {
+            mView.showSemInternet();
+            return;
+        }
+
         mView.showPbProcessamento();
 
         mApi.comics()

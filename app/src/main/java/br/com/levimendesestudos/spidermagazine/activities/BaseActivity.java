@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import br.com.levimendesestudos.spidermagazine.mvp.contracts.BasicView;
+import br.com.levimendesestudos.spidermagazine.utils.InternetUtil;
 import br.com.levimendesestudos.spidermagazine.utils.ToastUtil;
 import butterknife.ButterKnife;
 
@@ -21,6 +22,11 @@ public abstract class BaseActivity extends AppCompatActivity implements BasicVie
         super.onCreate(savedInstanceState);
         setContentView(layout());
         ButterKnife.bind(this);
+    }
+
+    @Override
+    public boolean hasInternet() {
+        return InternetUtil.isConnectedToInternet(this);
     }
 
     @Override

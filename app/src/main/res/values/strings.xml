@@ -15,4 +15,5 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="verifique_sua_conexao_com_a_internet">Verifique sua conexão com a internet</string>
 </resources>

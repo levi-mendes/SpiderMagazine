@@ -28,11 +28,25 @@
 
     <!--android:background="@color/toolbar_color"-->
     <ProgressBar
+        android:background="#FFF"
+        android:indeterminate="true"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:id="@+id/pbProcessamento"
         android:layout_gravity="center"
         android:visibility="gone"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tvSemInternet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@mipmap/ic_no_network"
+        android:layout_gravity="center"
+        android:textColor="#FFF"
+        android:text="@string/verifique_sua_conexao_com_a_internet"
+        android:visibility="gone"
+        />
 
     <GridView
         android:id="@+id/gvRevistas"

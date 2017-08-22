@@ -28,6 +28,10 @@ public interface MainMVP {
 
         void hidePbProcessamento();
 
+        void showSemInternet();
+
+        void hideSemInternet();
+
     }
 
 }

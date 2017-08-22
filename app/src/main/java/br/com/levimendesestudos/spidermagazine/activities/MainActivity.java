@@ -28,6 +28,8 @@ public class MainActivity extends BaseActivity implements MainMVP.View {
     GridView gvRevistas;
     @BindView(R.id.pbProcessamento)
     ProgressBar pbProcessamento;
+    @BindView(R.id.tvSemInternet)
+    TextView tvSemInternet;
 
     private MainPresenter mPresenter;
 
@@ -48,13 +50,29 @@ public class MainActivity extends BaseActivity implements MainMVP.View {
     }
 
     @Override
+    public void showSemInternet() {
+        tvSemInternet.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideSemInternet() {
+        tvSemInternet.setVisibility(View.GONE);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
     public void copyRight(String s) {
         tvCopyright.setText(s);
     }
 
     @Override
     public void carregarLista(List<Revista> revistas) {
-        RevistasListaAdapter adapter = new RevistasListaAdapter(this, revistas);
+        RevistasListaAdapter adapter = new RevistasListaAdapter();
+        adapter.addItems(revistas);
         gvRevistas.setAdapter(adapter);
     }
 

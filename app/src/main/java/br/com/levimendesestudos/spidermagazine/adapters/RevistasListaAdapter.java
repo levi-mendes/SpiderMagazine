@@ -8,12 +8,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
-//import com.squareup.picasso.Picasso;
-
 import java.util.List;
-
 import br.com.levimendesestudos.spidermagazine.R;
 import br.com.levimendesestudos.spidermagazine.activities.DetalhesActivity;
 import br.com.levimendesestudos.spidermagazine.model.Revista;
@@ -26,13 +22,9 @@ import static java.lang.String.valueOf;
 
 public class RevistasListaAdapter extends BaseAdapter {
 
-    private Context mContext;
     private  List<Revista> mList;
 
-    public RevistasListaAdapter(Context context, List<Revista> listaRevistas) {
-        mContext = context;
-        mList = listaRevistas;
-    }
+    public RevistasListaAdapter() {}
 
     @Override
     public int getCount() {
@@ -49,9 +41,15 @@ public class RevistasListaAdapter extends BaseAdapter {
         return i;
     }
 
+    public void addItems(List<Revista> listaRevistas) {
+        mList = listaRevistas;
+        notifyDataSetChanged();
+    }
+
     @Override
     public View getView(int i, View convertView, ViewGroup parent) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.row_lista_revista, parent, false);
+        Context context = parent.getContext();
+        View view = LayoutInflater.from(context).inflate(R.layout.row_lista_revista, parent, false);
 
         TextView tvIssueNumber = (TextView)view.findViewById(R.id.tvIssueNumber);
         ImageView ivRevista    = (ImageView)view.findViewById(R.id.ivRevista);
@@ -60,7 +58,7 @@ public class RevistasListaAdapter extends BaseAdapter {
 
         tvIssueNumber.setText(valueOf(revista.issueNumber));
 
-        Glide.with(mContext)
+        Glide.with(context)
             .load(revista.thumbnailPath +  "/portrait_medium.jpg")
             //.centerCrop()
             //.placeholder(R.drawable.loading_spinner)
@@ -68,9 +66,9 @@ public class RevistasListaAdapter extends BaseAdapter {
             .into(ivRevista);
 
         ivRevista.setOnClickListener(view1 ->  {
-                Intent intent = new Intent(mContext, DetalhesActivity.class);
-                intent.putExtra("revista", revista);
-                mContext.startActivity(intent);
+            Intent intent = new Intent(context, DetalhesActivity.class);
+            intent.putExtra("revista", revista);
+            context.startActivity(intent);
         });
 
         return view;
