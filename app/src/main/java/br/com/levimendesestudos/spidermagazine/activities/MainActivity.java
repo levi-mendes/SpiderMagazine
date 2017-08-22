@@ -1,7 +1,6 @@
 package br.com.levimendesestudos.spidermagazine.activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -12,16 +11,14 @@ import android.widget.GridView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import java.util.List;
-
 import br.com.levimendesestudos.spidermagazine.R;
 import br.com.levimendesestudos.spidermagazine.adapters.RevistasListaAdapter;
 import br.com.levimendesestudos.spidermagazine.model.Revista;
 import br.com.levimendesestudos.spidermagazine.mvp.contracts.MainMVP;
 import br.com.levimendesestudos.spidermagazine.mvp.presenter.MainPresenter;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements MainMVP.View {
+public class MainActivity extends BaseActivity implements MainMVP.View {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -35,11 +32,13 @@ public class MainActivity extends AppCompatActivity implements MainMVP.View {
     private MainPresenter mPresenter;
 
     @Override
+    public int layout() {
+        return R.layout.activity_main;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
@@ -87,10 +86,5 @@ public class MainActivity extends AppCompatActivity implements MainMVP.View {
     public void callSobreActivity() {
         Intent intent = new Intent(MainActivity.this, SobreActivity.class);
         startActivity(intent);
-    }
-
-    @Override
-    public boolean isActive() {
-        return true;
     }
 }
