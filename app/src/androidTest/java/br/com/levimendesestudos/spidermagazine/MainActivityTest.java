@@ -7,6 +7,8 @@ import android.support.test.runner.AndroidJUnit4;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import br.com.levimendesestudos.spidermagazine.activities.MainActivity;
 import br.com.levimendesestudos.spidermagazine.activities.SobreActivity;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.intent.Intents.intended;

@@ -1,4 +1,4 @@
-package br.com.levimendesestudos.spidermagazine;
+package br.com.levimendesestudos.spidermagazine.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -12,7 +12,8 @@ import android.widget.GridView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import java.util.List;
-import br.com.levimendesestudos.spidermagazine.activities.SobreActivity;
+
+import br.com.levimendesestudos.spidermagazine.R;
 import br.com.levimendesestudos.spidermagazine.adapters.RevistasListaAdapter;
 import br.com.levimendesestudos.spidermagazine.model.Revista;
 import br.com.levimendesestudos.spidermagazine.mvp.contracts.MainMVP;
