@@ -10,7 +10,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 
 import java.lang.reflect.Type;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import br.com.levimendesestudos.spidermagazine.model.Hero;
@@ -90,7 +93,17 @@ public class RevistaDeserializer implements JsonDeserializer<Object> {
     }
 
     private String date(JsonElement dates) {
-        return dates.getAsJsonObject().get("date").getAsString();
+        try {
+            //pega apenas o dia mes e ano
+            String strDate = dates.getAsJsonObject().get("date").getAsString().substring(0, 10);
+            Date date      = new SimpleDateFormat("yyyy-MM-dd").parse(strDate);
+            return new SimpleDateFormat("dd/MM/yyyy").format(date);
+
+        } catch (ParseException e) {
+            Log.e("date", e.getMessage(), e);
+        }
+
+        return "";
     }
 
     private double price(JsonElement prices) {
