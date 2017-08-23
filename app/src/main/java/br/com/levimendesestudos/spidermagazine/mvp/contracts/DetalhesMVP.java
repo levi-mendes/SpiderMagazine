@@ -12,6 +12,8 @@ public interface DetalhesMVP {
 
     interface View extends BasicView {
 
+        void configToolbar();
+
         void chamarTelaCapa();
 
         void carregarDados();

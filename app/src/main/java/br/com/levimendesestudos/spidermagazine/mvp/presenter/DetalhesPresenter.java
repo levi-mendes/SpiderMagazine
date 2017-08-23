@@ -16,6 +16,7 @@ public class DetalhesPresenter extends DetalhesMVP.Presenter {
 
     @Override
     public void init() {
+        mView.configToolbar();
         mView.carregarDados();
     }
 }

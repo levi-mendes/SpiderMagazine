@@ -48,14 +48,17 @@ public class DetalhesActivity extends BaseActivity implements DetalhesMVP.View {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        toolbar.setTitle("");
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         mRevista = (Revista)getIntent().getSerializableExtra("revista");
 
         mPresenter = new DetalhesPresenter(this);
         mPresenter.init();
+    }
+
+    @Override
+    public void configToolbar() {
+        toolbar.setTitle("");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
