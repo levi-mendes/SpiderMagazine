@@ -71,8 +71,7 @@ public class MainActivity extends BaseActivity implements MainMVP.View {
 
     @Override
     public void carregarLista(List<Revista> revistas) {
-        RevistasListaAdapter adapter = new RevistasListaAdapter();
-        adapter.addItems(revistas);
+        RevistasListaAdapter adapter = new RevistasListaAdapter(revistas);
         gvRevistas.setAdapter(adapter);
     }
 

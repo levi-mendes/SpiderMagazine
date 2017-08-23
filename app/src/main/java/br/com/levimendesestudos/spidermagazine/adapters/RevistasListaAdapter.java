@@ -9,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
+
 import java.util.List;
 import br.com.levimendesestudos.spidermagazine.R;
 import br.com.levimendesestudos.spidermagazine.activities.DetalhesActivity;
@@ -24,7 +25,9 @@ public class RevistasListaAdapter extends BaseAdapter {
 
     private  List<Revista> mList;
 
-    public RevistasListaAdapter() {}
+    public RevistasListaAdapter(List<Revista> list) {
+        mList = list;
+    }
 
     @Override
     public int getCount() {
@@ -39,11 +42,6 @@ public class RevistasListaAdapter extends BaseAdapter {
     @Override
     public long getItemId(int i) {
         return i;
-    }
-
-    public void addItems(List<Revista> listaRevistas) {
-        mList = listaRevistas;
-        notifyDataSetChanged();
     }
 
     @Override
