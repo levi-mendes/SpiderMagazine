@@ -15,7 +15,6 @@ public class Revista implements Serializable {
     public String description;
     public String thumbnailPath;
     public int issueNumber;
-
     public String title;
     public String date;
     public double price;

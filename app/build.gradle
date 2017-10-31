@@ -1,5 +1,14 @@
 apply plugin: 'com.android.application'
 
+apply plugin: 'checkstyle'
+
+task checkstyle(type: Checkstyle) {
+    configFile file("$project.rootDir/config/checkstyle/checkstyle.xml")
+    source 'src'
+    include '**/*.java'
+    classpath = files()
+}
+
 android {
     compileSdkVersion 26
     buildToolsVersion '26.0.2'

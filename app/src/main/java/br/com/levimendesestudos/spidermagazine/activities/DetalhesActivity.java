@@ -11,6 +11,7 @@ import br.com.levimendesestudos.spidermagazine.model.Revista;
 import br.com.levimendesestudos.spidermagazine.mvp.contracts.DetalhesMVP;
 import br.com.levimendesestudos.spidermagazine.mvp.presenter.DetalhesPresenter;
 import butterknife.BindView;
+
 import static java.lang.String.valueOf;
 
 public class DetalhesActivity extends BaseActivity implements DetalhesMVP.View {
