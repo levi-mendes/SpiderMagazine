@@ -49,8 +49,8 @@ public class RevistasListaAdapter extends BaseAdapter {
         Context context = parent.getContext();
         View view = LayoutInflater.from(context).inflate(R.layout.row_lista_revista, parent, false);
 
-        TextView tvIssueNumber = (TextView)view.findViewById(R.id.tvIssueNumber);
-        ImageView ivRevista    = (ImageView)view.findViewById(R.id.ivRevista);
+        TextView tvIssueNumber = view.findViewById(R.id.tvIssueNumber);
+        ImageView ivRevista    = view.findViewById(R.id.ivRevista);
 
         Revista revista = mList.get(i);
 
@@ -63,12 +63,14 @@ public class RevistasListaAdapter extends BaseAdapter {
             //.crossFade()
             .into(ivRevista);
 
-        ivRevista.setOnClickListener(view1 ->  {
-            Intent intent = new Intent(context, DetalhesActivity.class);
-            intent.putExtra("revista", revista);
-            context.startActivity(intent);
-        });
+        ivRevista.setOnClickListener(view1 -> callDetalhes(context, revista));
 
         return view;
+    }
+
+    public void callDetalhes(Context context, Revista revista) {
+        Intent intent = new Intent(context, DetalhesActivity.class);
+        intent.putExtra("revista", revista);
+        context.startActivity(intent);
     }
 }
