@@ -18,6 +18,8 @@ public interface MainMVP {
 
     interface View extends BasicView {
 
+        void configToolbar();
+
         void callSobreActivity();
 
         void carregarLista(List<Revista> revistas);

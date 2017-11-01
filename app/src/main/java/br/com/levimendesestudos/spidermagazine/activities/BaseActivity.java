@@ -7,14 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import br.com.levimendesestudos.spidermagazine.mvp.contracts.BasicView;
-import br.com.levimendesestudos.spidermagazine.utils.InternetUtil;
 import br.com.levimendesestudos.spidermagazine.utils.ToastUtil;
 import butterknife.ButterKnife;
+import static br.com.levimendesestudos.spidermagazine.utils.InternetUtil.isConnectedToInternet;
 
 /**
  * Created by 809778 on 23/12/2016.
  */
-
 public abstract class BaseActivity extends AppCompatActivity implements BasicView {
 
     @Override
@@ -26,7 +25,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BasicVie
 
     @Override
     public boolean hasInternet() {
-        return InternetUtil.isConnectedToInternet(this);
+        return isConnectedToInternet(this);
     }
 
     @Override
@@ -50,10 +49,8 @@ public abstract class BaseActivity extends AppCompatActivity implements BasicVie
         return super.onOptionsItemSelected(item);
     }
 
-
     @Override
     public boolean isActive() {
         return !isDestroyed();
     }
-
 }

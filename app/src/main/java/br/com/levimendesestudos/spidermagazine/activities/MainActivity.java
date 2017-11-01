@@ -42,11 +42,14 @@ public class MainActivity extends BaseActivity implements MainMVP.View {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("");
-
         mPresenter = new MainPresenter(this);
         mPresenter.init();
+    }
+
+    @Override
+    public void configToolbar() {
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("");
     }
 
     @Override

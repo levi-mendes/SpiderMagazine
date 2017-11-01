@@ -18,22 +18,16 @@ public class DetalhesActivity extends BaseActivity implements DetalhesMVP.View {
 
     @BindView(R.id.ivRevista)
     ImageView ivRevista;
-
     @BindView(R.id.tvTitle)
     TextView tvTitle;
-
     @BindView(R.id.tvDescription)
     TextView tvDescription;
-
     @BindView(R.id.tvDate)
     TextView tvDate;
-
     @BindView(R.id.tvPrice)
     TextView tvPrice;
-
     @BindView(R.id.tvPageCount)
     TextView tvPageCount;
-
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 

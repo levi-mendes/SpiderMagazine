@@ -18,6 +18,8 @@ public interface SobreMVP {
 
         void adddLinks();
 
+        void configToolbar();
+
     }
 
     abstract class Presenter extends BasicPresenter {

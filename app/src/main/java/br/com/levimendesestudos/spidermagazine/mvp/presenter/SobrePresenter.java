@@ -16,6 +16,7 @@ public class SobrePresenter extends SobreMVP.Presenter {
 
     @Override
     public void init() {
+        mView.configToolbar();
         mView.adddLinks();
     }
 }

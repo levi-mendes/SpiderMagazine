@@ -32,13 +32,16 @@ public class SobreActivity extends BaseActivity implements SobreMVP.View {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        mPresenter = new SobrePresenter(this);
+        mPresenter.init();
+    }
+
+    @Override
+    public void configToolbar() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.profile);
         toolbar.setNavigationOnClickListener(view -> onBackPressed());
-
-        mPresenter = new SobrePresenter(this);
-        mPresenter.init();
     }
 
     /**
@@ -67,7 +70,6 @@ public class SobreActivity extends BaseActivity implements SobreMVP.View {
         spanLinks.append(email);
         spanLinks.setSpan(clickEnviarEmail(email), spanLinks.length() - email.length(), spanLinks.length(), 0);
         spanLinks.append("\n\n");
-
     }
 
     @Override

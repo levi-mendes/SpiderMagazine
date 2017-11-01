@@ -12,7 +12,6 @@ import rx.schedulers.Schedulers;
 /**
  * Created by 809778 on 21/12/2016.
  */
-
 public class MainPresenter extends MainMVP.Presenter {
 
     private MainMVP.View mView;
@@ -27,6 +26,8 @@ public class MainPresenter extends MainMVP.Presenter {
 
     @Override
     public void init() {
+        mView.configToolbar();
+
         if (!mView.hasInternet()) {
             mView.showSemInternet();
             return;
