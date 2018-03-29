@@ -12,6 +12,7 @@ import br.com.levimendesestudos.spidermagazine.mvp.contracts.DetalhesMVP;
 import br.com.levimendesestudos.spidermagazine.mvp.presenter.DetalhesPresenter;
 import butterknife.BindView;
 
+import static java.lang.String.format;
 import static java.lang.String.valueOf;
 
 public class DetalhesActivity extends BaseActivity implements DetalhesMVP.View {
@@ -58,7 +59,7 @@ public class DetalhesActivity extends BaseActivity implements DetalhesMVP.View {
 
     @Override
     public void carregarDados() {
-        String url = mRevista.thumbnailPath + "/portrait_medium.jpg";
+        String url = format("%s/portrait_medium.jpg", mRevista.thumbnailPath);
 
         Glide.with(this)
                 .load(url)

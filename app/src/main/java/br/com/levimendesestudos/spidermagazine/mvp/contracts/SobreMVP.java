@@ -20,6 +20,7 @@ public interface SobreMVP {
 
         void configToolbar();
 
+        void carregarFoto();
     }
 
     abstract class Presenter extends BasicPresenter {

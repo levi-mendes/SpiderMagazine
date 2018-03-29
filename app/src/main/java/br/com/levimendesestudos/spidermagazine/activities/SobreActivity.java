@@ -12,16 +12,23 @@ import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 public class SobreActivity extends BaseActivity implements SobreMVP.View {
 
+    @BindView(R.id.ivLevi)
+    ImageView ivLevi;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.tvLinks)
     TextView tvLinks;
     private SpannableStringBuilder spanLinks = new SpannableStringBuilder();
     private SobrePresenter mPresenter;
+
+    private static final String LINK_FOTO_GITHUB = "https://avatars1.githubusercontent.com/u/13037757?s=400&u=5fe46ef5d33661f0aa2bec642811041500716bec&v=4";
 
     @Override
     public int layout() {
@@ -44,16 +51,23 @@ public class SobreActivity extends BaseActivity implements SobreMVP.View {
         toolbar.setNavigationOnClickListener(view -> onBackPressed());
     }
 
+    @Override
+    public void carregarFoto() {
+        Glide.with(this)
+                .load(LINK_FOTO_GITHUB)
+                .into(ivLevi);
+    }
+
     /**
      * Adiciona os links
      */
     @Override
     public void adddLinks() {
-        adicionarLinkEmail("Email: ", "levi.silva.mendes@gmail.com");
-        adicionarLink("Linkedin:   ", "https://br.linkedin.com/in/levi-mendes-56567035");
-        adicionarLink("Github:     ", "https://github.com/levi-mendes");
-        adicionarLink("Bitbucket:  ", "https://bitbucket.org/levi-mendes/");
-        adicionarLink("Facebook:   ", "https://m.facebook.com/profile.php?id=100010499918526");
+        adicionarLinkEmail(getString(R.string.titulo_email), getString(R.string.txt_email_levi));
+        adicionarLink(getString(R.string.titulo_linkedin), getString(R.string.txt_link_linkedin));
+        adicionarLink(getString(R.string.titulo_github), getString(R.string.txt_link_github));
+        adicionarLink(getString(R.string.titulo_bitbucket), getString(R.string.txt_link_bitbucket));
+        adicionarLink(getString(R.string.titulo_facebook), getString(R.string.txt_link_facebook));
 
         tvLinks.setMovementMethod(LinkMovementMethod.getInstance());
         tvLinks.setText(spanLinks, TextView.BufferType.SPANNABLE);

@@ -15,6 +15,7 @@ import br.com.levimendesestudos.spidermagazine.R;
 import br.com.levimendesestudos.spidermagazine.activities.DetalhesActivity;
 import br.com.levimendesestudos.spidermagazine.model.Revista;
 
+import static java.lang.String.format;
 import static java.lang.String.valueOf;
 
 /**
@@ -56,8 +57,10 @@ public class RevistasListaAdapter extends BaseAdapter {
 
         tvIssueNumber.setText(valueOf(revista.issueNumber));
 
+        String url = format("%s/portrait_medium.jpg", revista.thumbnailPath);
+
         Glide.with(context)
-            .load(revista.thumbnailPath +  "/portrait_medium.jpg")
+            .load(url)
             //.centerCrop()
             //.placeholder(R.drawable.loading_spinner)
             //.crossFade()

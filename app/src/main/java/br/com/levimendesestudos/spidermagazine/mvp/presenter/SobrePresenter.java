@@ -18,5 +18,6 @@ public class SobrePresenter extends SobreMVP.Presenter {
     public void init() {
         mView.configToolbar();
         mView.adddLinks();
+        mView.carregarFoto();
     }
 }

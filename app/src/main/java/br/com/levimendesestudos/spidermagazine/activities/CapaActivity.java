@@ -10,6 +10,8 @@ import br.com.levimendesestudos.spidermagazine.mvp.presenter.CapaPresenter;
 import butterknife.BindView;
 import butterknife.OnClick;
 
+import static java.lang.String.format;
+
 public class CapaActivity extends BaseActivity implements CapaMVP.View {
 
     @BindView(R.id.ivRevistaCapa)
@@ -34,7 +36,7 @@ public class CapaActivity extends BaseActivity implements CapaMVP.View {
     public void carregarCapa() {
         Revista revista = (Revista)getIntent().getSerializableExtra("revista");
 
-        String url = revista.thumbnailPath + "/portrait_uncanny.jpg";
+        String url = format("%s/portrait_uncanny.jpg", revista.thumbnailPath);
 
         Glide.with(this)
                 .load(url)

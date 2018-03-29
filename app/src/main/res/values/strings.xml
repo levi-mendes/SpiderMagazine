@@ -16,4 +16,14 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="verifique_sua_conexao_com_a_internet">Verifique sua conexão com a internet</string>
+    <string name="txt_email_levi">levi.silva.mendes@gmail.com</string>
+    <string name="txt_link_linkedin">https://br.linkedin.com/in/levi-mendes-56567035</string>
+    <string name="txt_link_github">https://github.com/levi-mendes</string>
+    <string name="txt_link_bitbucket">https://bitbucket.org/levi-mendes/</string>
+    <string name="txt_link_facebook">https://m.facebook.com/profile.php?id=100010499918526</string>
+    <string name="titulo_email">Email:</string>
+    <string name="titulo_linkedin">Linkedin:</string>
+    <string name="titulo_github">Github:</string>
+    <string name="titulo_bitbucket">Bitbucket:</string>
+    <string name="titulo_facebook">Facebook:</string>
 </resources>
