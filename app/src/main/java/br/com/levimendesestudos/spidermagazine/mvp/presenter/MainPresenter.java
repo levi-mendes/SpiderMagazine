@@ -1,6 +1,10 @@
 package br.com.levimendesestudos.spidermagazine.mvp.presenter;
 
 import android.util.Log;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.inject.Inject;
 import br.com.levimendesestudos.spidermagazine.R;
 import br.com.levimendesestudos.spidermagazine.api.SpiderApi;
@@ -35,7 +39,7 @@ public class MainPresenter extends MainMVP.Presenter {
 
         mView.showPbProcessamento();
 
-        mApi.comics()
+        mApi.comics(params())
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(hero -> {
@@ -52,6 +56,16 @@ public class MainPresenter extends MainMVP.Presenter {
                 Log.e("onError", error.getMessage(), error);
                 mView.showToast(error.getMessage());
             });
+    }
+
+    private Map<String, String> params() {
+        Map<String, String> params = new HashMap<>();
+
+        params.put("ts",     "1");
+        params.put("apikey", "bb4470a46d0659a43c566ac6056ed48d");
+        params.put("hash",   "479474cf0a28eac9998960da4d96f06b");
+
+        return params;
     }
 
     @Override

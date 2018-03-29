@@ -1,8 +1,11 @@
 package br.com.levimendesestudos.spidermagazine.api;
 
+import java.util.Map;
+
 import br.com.levimendesestudos.spidermagazine.model.Hero;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
+import retrofit2.http.QueryMap;
 import rx.Observable;
 
 /**
@@ -15,6 +18,6 @@ public interface SpiderApi {
     String CT_APP_JSON = "Content-Type: application/json";
 
     @Headers(CT_APP_JSON)
-    @GET("comics?ts=1&apikey=bb4470a46d0659a43c566ac6056ed48d&hash=479474cf0a28eac9998960da4d96f06b")
-    Observable<Hero> comics();
+    @GET("comics")
+    Observable<Hero> comics(@QueryMap Map<String, String> params);
 }
