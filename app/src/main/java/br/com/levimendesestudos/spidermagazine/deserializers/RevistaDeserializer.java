@@ -83,7 +83,12 @@ public class RevistaDeserializer implements JsonDeserializer<Object> {
         String retorno = "";
 
         try {
-            retorno = jo.get(fieldName) != null ? jo.get(fieldName).getAsString() : "";
+            JsonElement je = jo.get(fieldName);
+
+            if (je == null || je.toString().equals("null"))
+                return "Conteudo nao disponivel";
+
+            retorno = je.toString();
 
         } catch (UnsupportedOperationException e) {
             Log.e("joToString", "UnsupportedOperationException");
