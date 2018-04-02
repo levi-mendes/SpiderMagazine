@@ -11,7 +11,6 @@ task checkstyle(type: Checkstyle) {
 
 android {
     compileSdkVersion 26
-    buildToolsVersion '26.0.2'
 
     defaultConfig {
         applicationId "br.com.levimendesestudos.spidermagazine"
@@ -39,7 +38,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     // Espresso UI Testing dependencies.
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
@@ -98,7 +97,7 @@ at runtime. More info in this tools bug: (https://code.google.com/p/android/issu
 */
 configurations.compile.dependencies.each { compileDependency ->
     println "Excluding compile dependency: ${compileDependency.getName()}"
-    configurations.androidTestCompile.dependencies.each { androidTestCompileDependency ->
-        configurations.androidTestCompile.exclude module: "${compileDependency.getName()}"
+    configurations.androidTestImplementation.dependencies.each { androidTestImplementationDependency ->
+        configurations.androidTestImplementation.exclude module: "${compileDependency.getName()}"
     }
 }
