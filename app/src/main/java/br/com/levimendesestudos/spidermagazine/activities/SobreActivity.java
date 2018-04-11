@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 public class SobreActivity extends BaseActivity implements SobreMVP.View {
 
@@ -27,8 +28,6 @@ public class SobreActivity extends BaseActivity implements SobreMVP.View {
     TextView tvLinks;
     private SpannableStringBuilder spanLinks = new SpannableStringBuilder();
     private SobrePresenter mPresenter;
-
-    private static final String LINK_FOTO_GITHUB = "https://avatars1.githubusercontent.com/u/13037757?s=400&u=5fe46ef5d33661f0aa2bec642811041500716bec&v=4";
 
     @Override
     public int layout() {
@@ -54,7 +53,8 @@ public class SobreActivity extends BaseActivity implements SobreMVP.View {
     @Override
     public void carregarFoto() {
         Glide.with(this)
-                .load(LINK_FOTO_GITHUB)
+                .load(getString(R.string.link_foto_github))
+                .apply(RequestOptions.circleCropTransform())
                 .into(ivLevi);
     }
 
