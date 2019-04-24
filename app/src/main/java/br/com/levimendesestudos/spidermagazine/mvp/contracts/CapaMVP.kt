@@ -12,5 +12,5 @@ interface CapaMVP {
 
     }
 
-    abstract class Presenter : BasicPresenter()
+    interface Presenter : BasicPresenter
 }

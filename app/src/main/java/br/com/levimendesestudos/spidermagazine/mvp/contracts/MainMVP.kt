@@ -8,9 +8,9 @@ import br.com.levimendesestudos.spidermagazine.model.Revista
 
 interface MainMVP {
 
-    abstract class Presenter : BasicPresenter() {
+    interface Presenter : BasicPresenter {
 
-        abstract fun navigate(id: Int)
+        fun navigate(id: Int)
 
     }
 

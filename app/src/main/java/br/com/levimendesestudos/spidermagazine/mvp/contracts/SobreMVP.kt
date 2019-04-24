@@ -23,5 +23,5 @@ interface SobreMVP {
         fun carregarFoto()
     }
 
-    abstract class Presenter : BasicPresenter()
+    interface Presenter : BasicPresenter
 }

@@ -6,7 +6,7 @@ package br.com.levimendesestudos.spidermagazine.mvp.contracts
 
 interface DetalhesMVP {
 
-    abstract class Presenter : BasicPresenter()
+    interface Presenter : BasicPresenter
 
     interface View : BasicView {
 

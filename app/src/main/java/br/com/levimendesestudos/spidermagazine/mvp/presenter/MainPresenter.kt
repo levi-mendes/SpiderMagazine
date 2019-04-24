@@ -15,7 +15,7 @@ import rx.schedulers.Schedulers
 /**
  * Created by 809778 on 21/12/2016.
  */
-class MainPresenter(private val mView: MainMVP.View) : MainMVP.Presenter() {
+class MainPresenter(private val mView: MainMVP.View) : MainMVP.Presenter {
     @set:Inject
     internal var mApi: SpiderApi? = null
 
