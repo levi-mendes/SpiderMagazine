@@ -45,7 +45,7 @@ class MainActivity : BaseActivity(), MainMVP.View {
     }
 
     override fun carregarLista(revistas: List<Revista>) {
-        val adapter = RevistasListaAdapter(revistas)
+        val adapter = RevistasListaAdapter(this, revistas)
         (findViewById<View>(R.id.gvRevistas) as GridView).adapter = adapter
     }
 
@@ -70,7 +70,7 @@ class MainActivity : BaseActivity(), MainMVP.View {
     }
 
     override fun callSobreActivity() {
-        val intent = Intent(this@MainActivity, SobreActivity::class.java)
+        val intent = Intent(this, SobreActivity::class.java)
         startActivity(intent)
     }
 }
