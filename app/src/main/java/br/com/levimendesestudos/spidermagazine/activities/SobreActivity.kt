@@ -34,7 +34,7 @@ class SobreActivity : BaseActivity(), SobreMVP.View {
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setTitle(R.string.profile)
-        toolbar.setNavigationOnClickListener { view -> onBackPressed() }
+        toolbar.setNavigationOnClickListener { onBackPressed() }
     }
 
     override fun carregarFoto() {

@@ -35,7 +35,7 @@ abstract class BaseActivity : AppCompatActivity(), BasicView {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun isActive(): Boolean {
+    override fun active(): Boolean {
         return !isDestroyed
     }
 }
