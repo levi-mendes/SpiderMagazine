@@ -1,27 +1,16 @@
 package br.com.levimendesestudos.spidermagazine.activities;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-
 import br.com.levimendesestudos.spidermagazine.mvp.contracts.BasicView;
 import br.com.levimendesestudos.spidermagazine.utils.ToastUtil;
-import butterknife.ButterKnife;
 import static br.com.levimendesestudos.spidermagazine.utils.InternetUtil.isConnectedToInternet;
 
 /**
  * Created by 809778 on 23/12/2016.
  */
 public abstract class BaseActivity extends AppCompatActivity implements BasicView {
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(layout());
-        ButterKnife.bind(this);
-    }
 
     @Override
     public boolean hasInternet() {

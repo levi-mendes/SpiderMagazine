@@ -10,48 +10,27 @@ import br.com.levimendesestudos.spidermagazine.R;
 import br.com.levimendesestudos.spidermagazine.model.Revista;
 import br.com.levimendesestudos.spidermagazine.mvp.contracts.DetalhesMVP;
 import br.com.levimendesestudos.spidermagazine.mvp.presenter.DetalhesPresenter;
-import butterknife.BindView;
-
 import static java.lang.String.format;
 import static java.lang.String.valueOf;
 
 public class DetalhesActivity extends BaseActivity implements DetalhesMVP.View {
 
-    @BindView(R.id.ivRevista)
-    ImageView ivRevista;
-    @BindView(R.id.tvTitle)
-    TextView tvTitle;
-    @BindView(R.id.tvDescription)
-    TextView tvDescription;
-    @BindView(R.id.tvDate)
-    TextView tvDate;
-    @BindView(R.id.tvPrice)
-    TextView tvPrice;
-    @BindView(R.id.tvPageCount)
-    TextView tvPageCount;
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-
-    private DetalhesPresenter mPresenter;
     private Revista mRevista;
-
-    @Override
-    public int layout() {
-        return R.layout.activity_detalhes;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_detalhes);
 
         mRevista = (Revista)getIntent().getSerializableExtra("revista");
 
-        mPresenter = new DetalhesPresenter(this);
-        mPresenter.init();
+        DetalhesPresenter presenter = new DetalhesPresenter(this);
+        presenter.init();
     }
 
     @Override
     public void configToolbar() {
+        Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -59,6 +38,8 @@ public class DetalhesActivity extends BaseActivity implements DetalhesMVP.View {
 
     @Override
     public void carregarDados() {
+        ImageView ivRevista = findViewById(R.id.ivRevista);
+
         String url = format("%s/portrait_medium.jpg", mRevista.thumbnailPath);
 
         Glide.with(this)
@@ -68,11 +49,11 @@ public class DetalhesActivity extends BaseActivity implements DetalhesMVP.View {
                 //.crossFade()
                 .into(ivRevista);
 
-        tvTitle.setText(mRevista.title);
-        tvDescription.setText(mRevista.description);
-        tvDate.append(mRevista.date);
-        tvPrice.append(valueOf(mRevista.price));
-        tvPageCount.append(valueOf(mRevista.pageCount));
+        ((TextView)findViewById(R.id.tvTitle)).setText(mRevista.title);
+        ((TextView)findViewById(R.id.tvDescription)).setText(mRevista.description);
+        ((TextView)findViewById(R.id.tvDate)).append(mRevista.date);
+        ((TextView)findViewById(R.id.tvPrice)).append(valueOf(mRevista.price));
+        ((TextView)findViewById(R.id.tvPageCount)).append(valueOf(mRevista.pageCount));
 
         ivRevista.setOnClickListener(view -> chamarTelaCapa());
     }

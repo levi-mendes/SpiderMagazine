@@ -12,8 +12,6 @@ public interface BasicView {
 
     void showToast(int msg);
 
-    int layout();
-
     boolean hasInternet();
 
 }

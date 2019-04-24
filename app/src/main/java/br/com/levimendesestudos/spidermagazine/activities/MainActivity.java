@@ -8,7 +8,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import java.util.List;
 import br.com.levimendesestudos.spidermagazine.R;
@@ -16,31 +15,15 @@ import br.com.levimendesestudos.spidermagazine.adapters.RevistasListaAdapter;
 import br.com.levimendesestudos.spidermagazine.model.Revista;
 import br.com.levimendesestudos.spidermagazine.mvp.contracts.MainMVP;
 import br.com.levimendesestudos.spidermagazine.mvp.presenter.MainPresenter;
-import butterknife.BindView;
 
 public class MainActivity extends BaseActivity implements MainMVP.View {
-
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-    @BindView(R.id.tvCopyright)
-    TextView tvCopyright;
-    @BindView(R.id.gvRevistas)
-    GridView gvRevistas;
-    @BindView(R.id.pbProcessamento)
-    ProgressBar pbProcessamento;
-    @BindView(R.id.tvSemInternet)
-    TextView tvSemInternet;
 
     private MainPresenter mPresenter;
 
     @Override
-    public int layout() {
-        return R.layout.activity_main;
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
         mPresenter = new MainPresenter(this);
         mPresenter.init();
@@ -48,18 +31,19 @@ public class MainActivity extends BaseActivity implements MainMVP.View {
 
     @Override
     public void configToolbar() {
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
     }
 
     @Override
     public void showSemInternet() {
-        tvSemInternet.setVisibility(View.VISIBLE);
+        findViewById(R.id.tvSemInternet).setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideSemInternet() {
-        tvSemInternet.setVisibility(View.GONE);
+        findViewById(R.id.tvSemInternet).setVisibility(View.GONE);
     }
 
     @Override
@@ -69,23 +53,23 @@ public class MainActivity extends BaseActivity implements MainMVP.View {
 
     @Override
     public void copyRight(String s) {
-        tvCopyright.setText(s);
+        ((TextView)findViewById(R.id.tvCopyright)).setText(s);
     }
 
     @Override
     public void carregarLista(List<Revista> revistas) {
         RevistasListaAdapter adapter = new RevistasListaAdapter(revistas);
-        gvRevistas.setAdapter(adapter);
+        ((GridView)findViewById(R.id.gvRevistas)).setAdapter(adapter);
     }
 
     @Override
     public void showPbProcessamento() {
-     pbProcessamento.setVisibility(View.VISIBLE);
+        findViewById(R.id.pbProcessamento).setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hidePbProcessamento() {
-        pbProcessamento.setVisibility(View.GONE);
+        findViewById(R.id.pbProcessamento).setVisibility(View.GONE);
     }
 
     @Override

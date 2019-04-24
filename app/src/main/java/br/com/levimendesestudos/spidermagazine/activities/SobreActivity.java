@@ -6,7 +6,6 @@ import android.os.Bundle;
 import br.com.levimendesestudos.spidermagazine.R;
 import br.com.levimendesestudos.spidermagazine.mvp.contracts.SobreMVP;
 import br.com.levimendesestudos.spidermagazine.mvp.presenter.SobrePresenter;
-import butterknife.BindView;
 import android.support.v7.widget.Toolbar;
 import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
@@ -19,31 +18,21 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
 public class SobreActivity extends BaseActivity implements SobreMVP.View {
-
-    @BindView(R.id.ivLevi)
-    ImageView ivLevi;
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-    @BindView(R.id.tvLinks)
-    TextView tvLinks;
+    
     private SpannableStringBuilder spanLinks = new SpannableStringBuilder();
-    private SobrePresenter mPresenter;
-
-    @Override
-    public int layout() {
-        return R.layout.activity_sobre;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_sobre);
 
-        mPresenter = new SobrePresenter(this);
-        mPresenter.init();
+        SobrePresenter presenter = new SobrePresenter(this);
+        presenter.init();
     }
 
     @Override
     public void configToolbar() {
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.profile);
@@ -55,7 +44,7 @@ public class SobreActivity extends BaseActivity implements SobreMVP.View {
         Glide.with(this)
                 .load(getString(R.string.link_foto_github))
                 .apply(RequestOptions.circleCropTransform())
-                .into(ivLevi);
+                .into((ImageView)findViewById(R.id.ivLevi));
     }
 
     /**
@@ -69,8 +58,8 @@ public class SobreActivity extends BaseActivity implements SobreMVP.View {
         adicionarLink(getString(R.string.titulo_bitbucket), getString(R.string.txt_link_bitbucket));
         adicionarLink(getString(R.string.titulo_facebook), getString(R.string.txt_link_facebook));
 
-        tvLinks.setMovementMethod(LinkMovementMethod.getInstance());
-        tvLinks.setText(spanLinks, TextView.BufferType.SPANNABLE);
+        ((TextView)findViewById(R.id.tvLinks)).setMovementMethod(LinkMovementMethod.getInstance());
+        ((TextView)findViewById(R.id.tvLinks)).setText(spanLinks, TextView.BufferType.SPANNABLE);
     }
 
     /**

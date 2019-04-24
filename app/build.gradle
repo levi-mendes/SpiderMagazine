@@ -1,13 +1,16 @@
+apply plugin: 'kotlin-kapt'
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
+//apply plugin: 'checkstyle'
 
-apply plugin: 'checkstyle'
 
-task checkstyle(type: Checkstyle) {
-    configFile file("$project.rootDir/config/checkstyle/checkstyle.xml")
-    source 'src'
-    include '**/*.java'
-    classpath = files()
-}
+//task checkstyle(type: Checkstyle) {
+  //  configFile file("$project.rootDir/config/checkstyle/checkstyle.xml")
+    //source 'src'
+    //include '**/*.java'
+    //classpath = files()
+//}
 
 android {
     compileSdkVersion 26
@@ -15,10 +18,11 @@ android {
     defaultConfig {
         applicationId "br.com.levimendesestudos.spidermagazine"
         minSdkVersion 21
-        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {
@@ -42,7 +46,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    androidTestImplementation 'com.android.support.test.espresso:espresso-intents:2.2.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-intents:3.0.2'
 
     testImplementation 'junit:junit:4.12'
 
@@ -52,16 +56,12 @@ dependencies {
     testImplementation 'org.powermock:powermock-module-junit4:1.6.2'
 
     //RxAndroid
-    implementation "io.reactivex:rxandroid:1.0.1"
-    implementation "io.reactivex:rxjava:1.0.14"
+    implementation "io.reactivex:rxandroid:1.2.1"
+    implementation "io.reactivex:rxjava:1.2.1"
 
     //dagger
-    implementation 'com.google.dagger:dagger:2.10'
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.10'
-
-    //butterknife
-    implementation 'com.jakewharton:butterknife:8.6.0'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
+    implementation 'com.google.dagger:dagger:2.15'
+    kapt "com.google.dagger:dagger-compiler:2.15"
 
     // App's dependencies, including test
     implementation "com.android.support:appcompat-v7:26.1.0"
@@ -69,8 +69,8 @@ dependencies {
     implementation "com.android.support:support-v4:26.1.0"
     implementation "com.android.support:support-v13:26.1.0"
 
-    implementation 'com.squareup.retrofit2:retrofit:2.1.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
 
     implementation ("com.squareup.retrofit2:converter-simplexml:2.1.0") {
@@ -79,30 +79,10 @@ dependencies {
         exclude group: 'stax', module: 'stax'
     }
 
-    implementation "com.squareup.okhttp3:okhttp:3.4.1"
+    implementation "com.squareup.okhttp3:okhttp:3.10"
     implementation "com.squareup.okhttp:okhttp-urlconnection:2.1.0"
 
     implementation 'com.github.bumptech.glide:glide:4.0.0-RC1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0-RC1'
-}
-
-/*
-Resolves dependency versions across test and production APKs, specifically, transitive
-dependencies. This is required since Espresso internally has a dependency on support-annotations.
-*/
-configurations.all {
-    resolutionStrategy.force "com.android.support:support-annotations:25.0.1"
-}
-
-/*
-All direct/transitive dependencies shared between your test and production APKs need to be
-excluded from the test APK! This is necessary because both APKs will contain the same classes. Not
-excluding these dependencies from your test configuration will result in an dex pre-verifier error
-at runtime. More info in this tools bug: (https://code.google.com/p/android/issues/detail?id=192497)
-*/
-configurations.compile.dependencies.each { compileDependency ->
-    println "Excluding compile dependency: ${compileDependency.getName()}"
-    configurations.androidTestImplementation.dependencies.each { androidTestImplementationDependency ->
-        configurations.androidTestImplementation.exclude module: "${compileDependency.getName()}"
-    }
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
