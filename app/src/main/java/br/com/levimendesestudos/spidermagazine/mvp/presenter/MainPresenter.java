@@ -47,8 +47,8 @@ public class MainPresenter extends MainMVP.Presenter {
                 if (!mView.isActive())
                     return;
 
-                mView.carregarLista(hero.revistas);
-                mView.copyRight(hero.copyright);
+                mView.carregarLista(hero.getRevistas());
+                mView.copyRight(hero.getCopyright());
                 mView.hidePbProcessamento();
 
             }, error ->  {

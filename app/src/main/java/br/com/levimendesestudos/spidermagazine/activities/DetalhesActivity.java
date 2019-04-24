@@ -22,7 +22,7 @@ public class DetalhesActivity extends BaseActivity implements DetalhesMVP.View {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalhes);
 
-        mRevista = (Revista)getIntent().getSerializableExtra("revista");
+        mRevista = getIntent().getParcelableExtra("revista");
 
         DetalhesPresenter presenter = new DetalhesPresenter(this);
         presenter.init();

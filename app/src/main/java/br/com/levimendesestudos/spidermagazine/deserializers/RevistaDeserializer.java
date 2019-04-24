@@ -27,10 +27,8 @@ public class RevistaDeserializer implements JsonDeserializer<Object> {
 
     @Override
     public Object deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-        Hero retorno = new Hero();
         List<Revista> revistas = new ArrayList<>();
         JsonObject root = json.getAsJsonObject();
-        retorno.copyright = root.get("copyright").getAsString();
 
         JsonObject data = root.getAsJsonObject("data");
         JsonArray results = data.getAsJsonArray("results");
@@ -67,9 +65,9 @@ public class RevistaDeserializer implements JsonDeserializer<Object> {
             revistas.add(revista);
         }
 
-        retorno.revistas = revistas;
+        String copyright = root.get("copyright").getAsString();
 
-        return retorno;
+        return new Hero(revistas, copyright);
     }
 
     /**
