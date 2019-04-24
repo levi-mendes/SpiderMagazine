@@ -105,14 +105,12 @@ public class SobreActivity extends BaseActivity implements SobreMVP.View {
     }
 
     private ClickableSpan clickEnviarEmail(String email) {
-        ClickableSpan clickableSpan = new ClickableSpan() {
+        return new ClickableSpan() {
             @Override
             public void onClick(View widget) {
                 enviarEmail(email);
             }
         };
-
-        return clickableSpan;
     }
 
     @Override

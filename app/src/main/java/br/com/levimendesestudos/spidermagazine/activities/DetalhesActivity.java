@@ -16,13 +16,14 @@ import static java.lang.String.valueOf;
 public class DetalhesActivity extends BaseActivity implements DetalhesMVP.View {
 
     private Revista mRevista;
+    private static final String EXTRA_PARAM_REVISTA = "revista";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalhes);
 
-        mRevista = getIntent().getParcelableExtra("revista");
+        mRevista = getIntent().getParcelableExtra(EXTRA_PARAM_REVISTA);
 
         DetalhesPresenter presenter = new DetalhesPresenter(this);
         presenter.init();
@@ -61,7 +62,7 @@ public class DetalhesActivity extends BaseActivity implements DetalhesMVP.View {
     @Override
     public void chamarTelaCapa() {
         Intent intent = new Intent(DetalhesActivity.this, CapaActivity.class);
-        intent.putExtra("revista", mRevista);
+        intent.putExtra(EXTRA_PARAM_REVISTA, mRevista);
         startActivity(intent);
     }
 }
