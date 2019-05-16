@@ -1,7 +1,9 @@
 package br.com.levimendesestudos.spidermagazine.adapters
 
 import android.content.Context
-import android.content.Intent
+import android.support.design.widget.AppBarLayout
+import android.support.design.widget.CollapsingToolbarLayout
+import android.support.v4.view.ViewCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +14,7 @@ import com.bumptech.glide.Glide
 import br.com.levimendesestudos.spidermagazine.R
 import br.com.levimendesestudos.spidermagazine.activities.DetalhesActivity
 import br.com.levimendesestudos.spidermagazine.model.Revista
+import org.jetbrains.anko.startActivity
 import java.lang.String.format
 
 /**
@@ -50,14 +53,26 @@ class RevistasListaAdapter(private val mContext: Context, private val mList: Lis
         val url = format("%s/portrait_medium.jpg", revista.thumbnailPath)
 
         viewHolder.tvIssueNumber?.text = revista.issueNumber.toString()
-        viewHolder.ivRevista?.setOnClickListener { callDetalhes(mContext, revista) }
+        viewHolder.ivRevista?.setOnClickListener { mContext.startActivity<DetalhesActivity>("revista" to revista) }
 
-        Glide.with(mContext)
-                .load(url)
-                //.centerCrop()
-                //.placeholder(R.drawable.loading_spinner)
-                //.crossFade()
-                .into(viewHolder.ivRevista)
+        viewHolder.ivRevista?.let {
+
+            Glide.with(mContext)
+                    .load(url)
+                    //.centerCrop()
+                    //.placeholder(R.drawable.loading_spinner)
+                    //.crossFade()
+                    .into(it)
+            /*
+            val collapsing_toolbar = findViewById<View>(R.id.collapsing_toolbar) as CollapsingToolbarLayout
+            (findViewById<View>(R.id.app_bar_layout) as AppBarLayout).addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { _, verticalOffset ->
+                val min_height = ViewCompat.getMinimumHeight(collapsing_toolbar) * 2
+                val scale = (min_height + verticalOffset).toFloat() / min_height
+                it.setScaleX(if (scale >= 0) scale else 0)
+                it.setScaleY(if (scale >= 0) scale else 0)
+            })
+            */
+        }
 
         return view
     }
@@ -70,11 +85,5 @@ class RevistasListaAdapter(private val mContext: Context, private val mList: Lis
             tvIssueNumber = row?.findViewById(R.id.tvIssueNumber)
             ivRevista = row?.findViewById(R.id.ivRevista)
         }
-    }
-
-    private fun callDetalhes(context: Context, revista: Revista) {
-        val intent = Intent(context, DetalhesActivity::class.java)
-        intent.putExtra("revista", revista)
-        context.startActivity(intent)
     }
 }

@@ -16,14 +16,14 @@ import br.com.levimendesestudos.spidermagazine.mvp.presenter.MainPresenter
 
 class MainActivity : BaseActivity(), MainMVP.View {
 
-    private var mPresenter: MainPresenter? = null
+    lateinit var mPresenter: MainPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         mPresenter = MainPresenter(this)
-        mPresenter!!.init()
+        mPresenter.init()
     }
 
     override fun configToolbar() {
@@ -64,7 +64,7 @@ class MainActivity : BaseActivity(), MainMVP.View {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        mPresenter!!.navigate(item.itemId)
+        mPresenter.navigate(item.itemId)
 
         return true
     }
