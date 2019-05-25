@@ -2,17 +2,15 @@ package br.com.levimendesestudos.spidermagazine.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.GridView
-import android.widget.TextView
 import br.com.levimendesestudos.spidermagazine.R
 import br.com.levimendesestudos.spidermagazine.adapters.RevistasListaAdapter
 import br.com.levimendesestudos.spidermagazine.model.Revista
 import br.com.levimendesestudos.spidermagazine.mvp.contracts.MainMVP
 import br.com.levimendesestudos.spidermagazine.mvp.presenter.MainPresenter
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity(), MainMVP.View {
 
@@ -27,34 +25,33 @@ class MainActivity : BaseActivity(), MainMVP.View {
     }
 
     override fun configToolbar() {
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar!!.title = ""
     }
 
     override fun showSemInternet() {
-        findViewById<View>(R.id.tvSemInternet).visibility = View.VISIBLE
+        tvSemInternet.visibility = View.VISIBLE
     }
 
     override fun hideSemInternet() {
-        findViewById<View>(R.id.tvSemInternet).visibility = View.GONE
+        tvSemInternet.visibility = View.GONE
     }
 
     override fun copyRight(s: String) {
-        (findViewById<View>(R.id.tvCopyright) as TextView).text = s
+        tvCopyright.text = s
     }
 
     override fun carregarLista(revistas: List<Revista>) {
         val adapter = RevistasListaAdapter(this, revistas)
-        (findViewById<View>(R.id.gvRevistas) as GridView).adapter = adapter
+        gvRevistas.adapter = adapter
     }
 
     override fun showPbProcessamento() {
-        findViewById<View>(R.id.pbProcessamento).visibility = View.VISIBLE
+        pbProcessamento.visibility = View.VISIBLE
     }
 
     override fun hidePbProcessamento() {
-        findViewById<View>(R.id.pbProcessamento).visibility = View.GONE
+        pbProcessamento.visibility = View.GONE
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
