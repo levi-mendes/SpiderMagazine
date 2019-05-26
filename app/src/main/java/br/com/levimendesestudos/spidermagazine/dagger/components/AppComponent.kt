@@ -14,5 +14,5 @@ import dagger.Component
 @Singleton
 interface AppComponent {
 
-    fun inject(presenter: MainPresenter)
+    fun inject(viewModel: MainPresenter)
 }

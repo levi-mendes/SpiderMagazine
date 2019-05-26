@@ -1,25 +1,23 @@
 package br.com.levimendesestudos.spidermagazine;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import br.com.levimendesestudos.spidermagazine.mvp.contracts.MainMVP;
-import br.com.levimendesestudos.spidermagazine.mvp.presenter.MainPresenter;
+import br.com.levimendesestudos.spidermagazine.mvp.presenter.MainViewModel;
 
 import static org.mockito.Mockito.verify;
 
-public class MainPresenterTest {
+public class MainViewModelTest {
 
-    MainPresenter mainPresenter;
+    MainViewModel mainViewModel;
     @Mock
     MainMVP.View mView;
 
-    public MainPresenterTest() {
-        mainPresenter = new MainPresenter(mView);
+    public MainViewModelTest() {
+        mainViewModel = new MainViewModel(mView);
     }
 
     @Before

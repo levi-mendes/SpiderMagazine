@@ -26,7 +26,7 @@ class MainActivity : BaseActivity(), MainMVP.View {
 
     override fun configToolbar() {
         setSupportActionBar(toolbar)
-        supportActionBar!!.title = ""
+        supportActionBar?.title = ""
     }
 
     override fun showSemInternet() {
