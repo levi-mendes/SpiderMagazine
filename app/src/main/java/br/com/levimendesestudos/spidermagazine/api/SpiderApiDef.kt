@@ -6,11 +6,7 @@ import retrofit2.http.Headers
 import retrofit2.http.QueryMap
 import rx.Observable
 
-/**
- * Created by 809778 on 21/12/2016.
- */
-
-interface SpiderApi {
+interface SpiderApiDef {
 
     @Headers(CT_APP_JSON)
     @GET("comics")

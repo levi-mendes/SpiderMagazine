@@ -6,18 +6,16 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import br.com.levimendesestudos.spidermagazine.mvp.contracts.MainMVP;
-import br.com.levimendesestudos.spidermagazine.mvp.presenter.MainViewModel;
-
-import static org.mockito.Mockito.verify;
+import br.com.levimendesestudos.spidermagazine.mvp.presenter.MainPresenter;
 
 public class MainViewModelTest {
 
-    MainViewModel mainViewModel;
+    MainPresenter mainViewModel;
     @Mock
     MainMVP.View mView;
 
     public MainViewModelTest() {
-        mainViewModel = new MainViewModel(mView);
+        mainViewModel = new MainPresenter(mView);
     }
 
     @Before

@@ -2,26 +2,54 @@ package br.com.levimendesestudos.spidermagazine.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import br.com.levimendesestudos.spidermagazine.R
 import br.com.levimendesestudos.spidermagazine.adapters.RevistasListaAdapter
+import br.com.levimendesestudos.spidermagazine.koin.ApiSpiderModule
 import br.com.levimendesestudos.spidermagazine.model.Revista
 import br.com.levimendesestudos.spidermagazine.mvp.contracts.MainMVP
-import br.com.levimendesestudos.spidermagazine.mvp.presenter.MainPresenter
 import kotlinx.android.synthetic.main.activity_main.*
+import org.koin.android.ext.android.inject
+import rx.android.schedulers.AndroidSchedulers
+import rx.schedulers.Schedulers
+import java.util.HashMap
 
 class MainActivity : BaseActivity(), MainMVP.View {
 
-    lateinit var mPresenter: MainPresenter
+    val mApi: ApiSpiderModule by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        mPresenter = MainPresenter(this)
-        mPresenter.init()
+        mApi.providesSpiderApi().comics(params())
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ hero ->
+
+                if (active()) {
+                    carregarLista(hero.revistas)
+                    copyRight(hero.copyright)
+                    hidePbProcessamento()
+                }
+
+            }, {error ->
+                Log.e("onError", error.message, error)
+                showToast(error.message!!)
+            })
+    }
+
+    private fun params(): Map<String, String> {
+        val params = HashMap<String, String>()
+
+        params["ts"] = "1"
+        params["apikey"] = "bb4470a46d0659a43c566ac6056ed48d"
+        params["hash"] = "479474cf0a28eac9998960da4d96f06b"
+
+        return params
     }
 
     override fun configToolbar() {
@@ -61,7 +89,9 @@ class MainActivity : BaseActivity(), MainMVP.View {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        mPresenter.navigate(item.itemId)
+        when (item.itemId) {
+            R.id.action_profile -> callSobreActivity()
+        }
 
         return true
     }
